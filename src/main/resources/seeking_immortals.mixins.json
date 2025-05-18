@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ytgld.seeking_immortals.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "seeking_immortals.refmap.json",
+  "mixins": [
+    "EntityMixin",
+    "LivingEntityMixin",
+    "MobEffectInstanceMixin",
+    "PlayerMixin"
+  ],
+  "client": [
+    "client.AdvancementWidgetMixin",
+    "client.ATabMixin",
+    "client.ChestRendererMixin",
+    "client.GameRendererMixin",
+    "client.GuiGraphicsMixin",
+    "client.LevelRendererMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

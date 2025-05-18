@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "root": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "seeking_immortals:nightmare_base"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:gui/advancements/backgrounds/end",
+    "description": {
+      "text": "§4Nightmare"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "seeking_immortals:nightmare_base"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "§4Nightmare"
+    }
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

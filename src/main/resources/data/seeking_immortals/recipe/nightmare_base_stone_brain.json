@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "seeking_immortals:nightmare_virus"
+    }
+  ],
+  "result": {
+    "id": "seeking_immortals:nightmare_base_stone_brain",
+    "count": 1
+  }
+}

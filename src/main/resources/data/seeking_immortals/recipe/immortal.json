@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_star"
+    },
+    {
+      "item": "minecraft:dragon_head"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    }
+  ],
+  "result": {
+    "id": "seeking_immortals:immortal",
+    "count": 1
+  }
+}

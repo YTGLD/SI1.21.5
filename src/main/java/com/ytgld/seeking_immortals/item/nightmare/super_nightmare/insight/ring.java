@@ -1,0 +1,70 @@
+package com.ytgld.seeking_immortals.item.nightmare.super_nightmare.insight;
+
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+import top.theillusivec4.curios.api.SlotContext;
+
+import java.util.function.Consumer;
+
+/**
+ *永恒的力量,抗性.生命恢复,急迫,生命提升
+ * <p>
+ * <p>
+ *  每获得一种3级及以上的药水状态
+ * <p>
+ *  减少10%药水持续时间
+ * <p>
+ * <p>
+ *  任何药水效果结束，你将恢复4点生命值
+ * <p>
+ *  若药水状态为负面，则恢复10%最大生命值
+
+ */
+
+public class ring extends nightmare implements SuperNightmare {
+    public ring(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        if (!slotContext.entity().level().isClientSide) {
+            if (slotContext.entity().tickCount%20==0) {
+                slotContext.entity().addEffect(new MobEffectInstance(MobEffects.STRENGTH, 120, 2, false, false));
+                slotContext.entity().addEffect(new MobEffectInstance(MobEffects.REGENERATION, 120, 2, false, false));
+                slotContext.entity().addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 120, 2, false, false));
+                slotContext.entity().addEffect(new MobEffectInstance(MobEffects.HASTE, 120, 2, false, false));
+                slotContext.entity().addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 120, 2, false, false));
+            }
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        slotContext.entity().removeEffect(MobEffects.STRENGTH);
+        slotContext.entity().removeEffect(MobEffects.REGENERATION);
+        slotContext.entity().removeEffect(MobEffects.RESISTANCE);
+        slotContext.entity().removeEffect(MobEffects.HASTE);
+        slotContext.entity().removeEffect(MobEffects.HEALTH_BOOST);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> pTooltipComponents, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltipDisplay, pTooltipComponents,flag);
+        pTooltipComponents.accept(Component.translatable("item.ring.tool.string").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.accept(Component.literal(""));
+        pTooltipComponents.accept(Component.translatable("item.ring.tool.string.1").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.accept(Component.translatable("item.ring.tool.string.2").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.accept(Component.literal(""));
+        pTooltipComponents.accept(Component.translatable("item.ring.tool.string.3").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.accept(Component.translatable("item.ring.tool.string.4").withStyle(ChatFormatting.DARK_RED));
+    }
+
+}
