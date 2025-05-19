@@ -20,7 +20,7 @@ public class Config {
             BUILDER.push("噩梦");
             nightmareBaseMaxItem = BUILDER
                     .comment("“”噩梦基座“给玩家的罪孽数量")
-                    .defineInRange("nig_", 5, 0, 7);
+                    .defineInRange("nightmare_", 3, 0, 7);
 
             Nightecora = BUILDER
                     .comment("Nightecora病毒的额外生命值惩罚，单位百分比")
@@ -47,19 +47,6 @@ public class Config {
             nightmare_base_insight_insane = BUILDER
                     .comment("癫狂之石的杀死生物后获得的伤害加成，单位百分比")
                     .defineInRange("nightmare_base_insight_insane", 150, 0, 99999);
-            BUILDER.pop();
-        }
-
-        {
-            BUILDER.push("测试");
-            x = BUILDER.comment("x")
-                    .defineInRange("x", 0, -360f, 360f);
-            y = BUILDER.comment("y")
-                    .defineInRange("y", 0, -360f, 360f);
-            z = BUILDER.comment("z")
-                    .defineInRange("z", 0, -360f, 360f);
-
-
             BUILDER.pop();
         }
 

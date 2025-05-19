@@ -1,15 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "tag": "minecraft:candles"
-    },
-    {
-      "item": "seeking_immortals:nightmare_base_stone_brain"
-    },
-    {
-      "item": "seeking_immortals:nightmare_base_reversal_orb"
-    }
+    "#minecraft:candles",
+    "seeking_immortals:nightmare_base_stone_brain",
+    "seeking_immortals:nightmare_base_reversal_orb"
   ],
   "result": {
     "id": "seeking_immortals:candle",

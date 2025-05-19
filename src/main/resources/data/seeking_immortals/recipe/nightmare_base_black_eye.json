@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "seeking_immortals:nightmare_base_start_pod",
+    "seeking_immortals:nightmare_base_start_egg",
+    "seeking_immortals:nightmare_base_start_power"
+  ],
+  "result": {
+    "id": "seeking_immortals:nightmare_base_black_eye",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "seeking_immortals:nightmare_base_insight_drug",
+    "seeking_immortals:nightmare_base_insight_insane",
+    "seeking_immortals:nightmare_base_insight_collapse"
+  ],
+  "result": {
+    "id": "seeking_immortals:nightmare_base_start",
+    "count": 1
+  }
+}

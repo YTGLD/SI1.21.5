@@ -23,7 +23,7 @@ import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.reversal.candl
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.reversal.nightmare_base_reversal_card;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.reversal.nightmare_base_reversal_mysterious;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.reversal.nightmare_base_reversal_orb;
-import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_egg;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.*;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_pod;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_power;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.*;
@@ -78,5 +78,6 @@ public class Items {
 
     public static final DeferredHolder<Item,?> nightmare_base_start_power =ITEMS.registerItem("nightmare_base_start_power", nightmare_base_start_power::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> tricky_puppets =ITEMS.registerItem("tricky_puppets", tricky_puppets::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> wolf =ITEMS.registerItem("wolf", wolf::new,new Item.Properties().stacksTo(1));
 
 }

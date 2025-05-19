@@ -86,6 +86,7 @@ public class nightmare_base_start extends nightmare implements SuperNightmare {
         pTooltipComponents.accept(Component.translatable("item.seeking_immortals.nightmare_base_start_power").withStyle(ChatFormatting.DARK_RED));
         pTooltipComponents.accept(Component.translatable("item.seeking_immortals.nightmare_base_start_pod").withStyle(ChatFormatting.DARK_RED));
         pTooltipComponents.accept(Component.translatable("item.seeking_immortals.nightmare_base_start_egg").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.accept(Component.translatable("item.seeking_immortals.wolf").withStyle(ChatFormatting.DARK_RED));
         pTooltipComponents.accept(Component.literal(""));
 
         pTooltipComponents.accept(Component.translatable("item.nightmareeye.tool.string.2").withStyle(ChatFormatting.DARK_RED));

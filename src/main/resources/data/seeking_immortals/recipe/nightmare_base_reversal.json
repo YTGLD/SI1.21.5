@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "seeking_immortals:nightmare_base_stone_meet",
+    "seeking_immortals:nightmare_base_stone_virus",
+    "seeking_immortals:nightmare_base_stone_brain"
+  ],
+  "result": {
+    "id": "seeking_immortals:nightmare_base_reversal",
+    "count": 1
+  }
+}

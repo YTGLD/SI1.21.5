@@ -18,8 +18,9 @@ public class Tab {
             .title(Component.translatable("itemGroup.seeking_immortals"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.immortal.get()));
-
                 b.accept(new ItemStack(Items.nightmare_base.get()));
+
+
                 b.accept(new ItemStack(Items.nightmare_base_black_eye.get()));
                 b.accept(new ItemStack(Items.nightmare_base_black_eye_eye.get()));
                 b.accept(new ItemStack(Items.nightmare_base_black_eye_heart.get()));
@@ -66,6 +67,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base_start_pod.get()));
                 b.accept(new ItemStack(Items.nightmare_base_start_egg.get()));
                 b.accept(new ItemStack(Items.nightmare_base_start_power.get()));
+                b.accept(new ItemStack(Items.wolf.get()));
 
             })
             .build());

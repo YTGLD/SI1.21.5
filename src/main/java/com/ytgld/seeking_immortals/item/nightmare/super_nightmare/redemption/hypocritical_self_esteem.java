@@ -128,9 +128,9 @@ public class hypocritical_self_esteem extends nightmare implements SuperNightmar
         if (Screen.hasShiftDown()) {
             tooltip.accept(Component.translatable("item.hypocritical_self_esteem.tool.string").withStyle(ChatFormatting.DARK_RED));
             tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("effect.minecraft.regeneration").withStyle(ChatFormatting.RED)));
-            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("attribute.name.generic.attack_damage").withStyle(ChatFormatting.RED)));
-            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("attribute.name.generic.armor").withStyle(ChatFormatting.RED)));
-            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("attribute.name.generic.attack_speed").withStyle(ChatFormatting.RED)));
+            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("seeking_immortals.item.attack").withStyle(ChatFormatting.RED)));
+            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("seeking_immortals.item.armor").withStyle(ChatFormatting.RED)));
+            tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("seeking_immortals.item.attack_speed").withStyle(ChatFormatting.RED)));
             tooltip.accept(Component.literal("+5%").withStyle(ChatFormatting.RED).append(Component.translatable("attrib.seeking_immortals.critical").withStyle(ChatFormatting.RED)));
             tooltip.accept(Component.literal(""));
             tooltip.accept(Component.translatable("item.hypocritical_self_esteem.tool.string.1").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDC143C))));

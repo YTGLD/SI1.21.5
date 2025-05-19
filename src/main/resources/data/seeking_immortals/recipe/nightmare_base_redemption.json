@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "seeking_immortals:nightmare_base_reversal_orb",
+    "seeking_immortals:nightmare_base_reversal_card",
+    "seeking_immortals:nightmare_base_reversal_mysterious"
+  ],
+  "result": {
+    "id": "seeking_immortals:nightmare_base_redemption",
+    "count": 1
+  }
+}

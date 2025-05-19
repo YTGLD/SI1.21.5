@@ -91,15 +91,11 @@ public class nightmare_base_reversal extends nightmare implements SuperNightmare
 
             if (slotContext.entity().getHealth() <= 1) {
                 if (stack.get(DataReg.tag) != null) {
-                    if (stack.get(DataReg.tag).getInt(att).isPresent()) {
-                        if (stack.get(DataReg.tag).getBoolean(AdvancementEvt.nightmare_base_reversal_orb).isPresent()) {
-                            if (!stack.get(DataReg.tag).getBoolean(AdvancementEvt.nightmare_base_reversal_orb).get()) {
-                                if (slotContext.entity() instanceof Player player) {
-                                    player.addItem(new ItemStack(Items.nightmare_base_reversal_orb.get()));
-                                }
-                                stack.get(DataReg.tag).putBoolean(AdvancementEvt.nightmare_base_reversal_orb, true);
-                            }
+                    if (!stack.get(DataReg.tag).getBoolean(AdvancementEvt.nightmare_base_reversal_orb).isPresent()) {
+                        if (slotContext.entity() instanceof Player player) {
+                            player.addItem(new ItemStack(Items.nightmare_base_reversal_orb.get()));
                         }
+                        stack.get(DataReg.tag).putBoolean(AdvancementEvt.nightmare_base_reversal_orb, true);
                     }
                 }
                 if (slotContext.entity().level() instanceof ServerLevel serverLevel) {

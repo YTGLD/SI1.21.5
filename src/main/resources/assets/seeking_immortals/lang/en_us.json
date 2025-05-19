@@ -11,6 +11,9 @@
 "seeking_immortals.super_nightmare.name.1": "can use this item",
 "item.nightmareeye.tool.string.2": "Cannot be removed",
 
+  "seeking_immortals.item.attack": "damaged",
+  "seeking_immortals.item.armor": "Armor",
+  "seeking_immortals.item.attack_speed": "Attack speed",
 
 
   "attribute.name.seeking_immortals.allattack": "universalDamage",
@@ -348,7 +351,22 @@
 "seeking_immortals.jei.item.seeking_immortals.hypocritical_self_esteem": "In the presence of withered state, deliver the final blow to the Ender Dragon with an empty hand; only one player can obtain it",
 
 
- "item.seeking_immortals.nightmare_base_start":"§4Beginning of Nightmare",
+  "item.seeking_immortals.wolf":"§4Lonely Wolf",
+  "item.wolf.tool.string": "Killing each type of creature will increase your life and armor by 1 point",
+  "item.wolf.tool.string.1": "You deal an additional 25% damage to creatures you have previously killed",
+  "item.wolf.tool.string.2": "Mark nearby units that you have patrolled",
+  "item.wolf.tool.string.3": "Each time you are injured, the damage is transferred to them; if a unit dies, the item enters a 5-second cooldown",
+  "seeking_immortals.item.kill": "You haven't worn it yet, you haven't killed a creature",
+  "advancements.tooltip.wolf.text": "Obtain this item",
+  "advancements.tooltip.wolf.hand": "One Leaf Boat",
+  "seeking_immortals.jei.item.seeking_immortals.wolf": "Have your wolf kill the Warden",
+
+
+
+
+
+
+  "item.seeking_immortals.nightmare_base_start":"§4Beginning of Nightmare",
   "item.nightmare_base_start.tool.string": "Armor is nullified",
  "item.nightmare_base_start.tool.string.1": "Every time you take damage, it forcibly reduces 1 health point",
  "item.nightmare_base_start.tool.string.2": "Does not trigger when the health is below 10",
