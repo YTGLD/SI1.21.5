@@ -386,7 +386,12 @@
 
   "advancements.tooltip.nightmare_base_start_egg.text": "Obtain this item",
   "advancements.tooltip.nightmare_base_start_egg.hand": "A lazy egg",
-
+"item.seeking_immortals.disintegrating_stone":"§4 Split Stone",
+  "item.disintegrating_stone.tool.string": "This item's stats increase as you install more mods",
+  "item.disintegrating_stone.tool.string.1": "Cosmetic items from any mod will be neutralized",
+  "item.disintegrating_stone.tool.string.2": "The upper limit is 1800%",
+"advancements.tooltip.disintegrating_stone.text": "Get this item",
+  "advancements.tooltip.disintegrating_stone.hand": "The sky is falling apart",
   "item.seeking_immortals.nightmare_base_start_power":"§4Astonishing Power",
   "item.nightmare_base_start_power.tool.string": "For each positive potion effect present",
   "item.nightmare_base_start_power.tool.string.1": "All your attributes increase by 2%",
@@ -398,6 +403,25 @@
   "seeking_immortals.jei.item.seeking_immortals.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
 
   "advancements.tooltip.nightmare_base.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base.hand": "Beginning"
+  "advancements.tooltip.nightmare_base.hand": "Beginning",
+
+
+
+
+
+
+
+
+
+  "item.seeking_immortals.eye":"§4Evil Eyes",
+  "item.eye.tool.string.1": "Tear the creatures you look at, weaken them and restore your health",
+  "item.eye.tool.string.2": "Assuming you are at full health at the time of the bite, the excess recovered health will be stored in the item",
+  "item.eye.tool.string.3": "When you take critical damage and have more than 200% of your Max Health",
+  "item.eye.tool.string.4": "Consume all your health and avoid this death incidentally restoring you to full health",
+  "item.eye.tool.string.5": "stored blood",
+  "item.eye.tool.string.6": "You need to look at mobs to get blood",
+
+  "advancements.tooltip.eye.text": "Obtain this item",
+  "advancements.tooltip.eye.hand": "Lonely and evil eyes"
 }
 

@@ -63,6 +63,8 @@ public abstract class ATabMixin {
                 }
             }
 
+            this.root.drawConnectivity(guiGraphics, i, j, true);
+            this.root.drawConnectivity(guiGraphics, i, j, false);
             if (root instanceof IAdvancementWidget iAdvancementWidget) {
                 iAdvancementWidget.seekingImmortals$draw(guiGraphics, i, j);
             }

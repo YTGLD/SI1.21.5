@@ -1,0 +1,41 @@
+{
+  "parent": "seeking_immortals:seeking_immortals/disintegrating_stone",
+  "criteria": {
+    "eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "seeking_immortals:eye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.eye.text"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "seeking_immortals:eye"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.eye.hand"
+    }
+  },
+  "requirements": [
+    [
+      "eye"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

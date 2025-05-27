@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:nether_star",
+    "#curios:nightmare",
+    "seeking_immortals:nightmare_base_insight_collapse",
+    "seeking_immortals:immortal"
+  ],
+  "result": {
+    "id": "seeking_immortals:disintegrating_stone",
+    "count": 1
+  }
+}

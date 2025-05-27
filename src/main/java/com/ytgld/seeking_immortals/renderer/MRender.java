@@ -29,7 +29,14 @@ public abstract class MRender extends RenderType {
             RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false)
     );
 
-
+    public static final RenderType LIGHTNING = create(
+            "lightning",
+            1536,
+            false,
+            true,
+            RenderPs.LIGHTNINGBloodRenderPipeline,
+            RenderType.CompositeState.builder().setOutputState(WEATHER_TARGET).createCompositeState(false)
+    );
     public static final RenderType endBlood = create(
             "end_si",
             1536,

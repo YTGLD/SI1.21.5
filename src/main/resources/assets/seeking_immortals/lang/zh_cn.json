@@ -384,9 +384,18 @@
   "item.wolf.tool.string.3": "每次受伤都会转移到它们身上，若单位死亡则物品进入5秒冷却",
   "seeking_immortals.item.kill": "你还没有佩戴它没有杀死过生物",
 
-  "advancements.tooltip.wolf.text": "Obtain this item",
+  "advancements.tooltip.wolf.text": "获得这个物品",
   "advancements.tooltip.wolf.hand": "一叶孤舟",
   "seeking_immortals.jei.item.seeking_immortals.wolf": "让你的狼杀死监守者",
+
+
+  "item.seeking_immortals.disintegrating_stone":"§4裂天石",
+  "item.disintegrating_stone.tool.string": "此物品的属性会随着你安装模组的数量的增加而增加",
+  "item.disintegrating_stone.tool.string.1": "来自任何模组的饰品都可能无效化",
+  "item.disintegrating_stone.tool.string.2": "上限为1800%",
+
+  "advancements.tooltip.disintegrating_stone.text": "获得这个物品",
+  "advancements.tooltip.disintegrating_stone.hand": "天崩地裂",
 
 
   "advancements.tooltip.nightmare_base_stone.text": "获得死兆方尖碑",
@@ -404,8 +413,17 @@
   "advancements.tooltip.nightmare_base_black_eye.text": "获得邪念之窥眸",
   "advancements.tooltip.nightmare_base_black_eye.hand": "永远凝视",
   "advancements.tooltip.nightmare_base_stone_virus.text": "获得Nightecora病毒",
-  "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体"
+  "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体",
 
+  "item.seeking_immortals.eye":"§4无名邪眼",
+  "item.eye.tool.string.1": "撕咬你目视的生物，并削弱它们和恢复你的生命值",
+  "item.eye.tool.string.2": "假设撕咬时你是满血状态，那么多余恢复的生命值将储存在物品当中",
+  "item.eye.tool.string.3": "当你受到致命伤害，且储存的血液量大于你200%最大生命值时",
+  "item.eye.tool.string.4": "消耗血液并免除这次死亡附带恢复你至满血",
+  "item.eye.tool.string.5": "储存的血液",
+  "item.eye.tool.string.6": "你需要去注视生物来获得血液",
+  "advancements.tooltip.eye.text": "Obtain this item",
+  "advancements.tooltip.eye.hand": "孤独且邪恶的眼眸"
 }
 
 

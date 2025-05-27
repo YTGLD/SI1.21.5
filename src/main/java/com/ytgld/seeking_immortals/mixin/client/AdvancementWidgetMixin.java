@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import javax.annotation.Nullable;
+import java.util.Iterator;
 import java.util.List;
 
 @Mixin(AdvancementWidget.class)
@@ -51,6 +52,9 @@ public abstract class AdvancementWidgetMixin implements IAdvancementWidget {
     @Shadow protected abstract void drawMultilineText(GuiGraphics guiGraphics, List<FormattedCharSequence> text, int x, int y, int color);
 
     @Shadow @Final private List<FormattedCharSequence> titleLines;
+
+    @Shadow @Nullable private AdvancementWidget parent;
+
 
     @Override
     public void seekingImmortals$draw(GuiGraphics guiGraphics, int x, int y) {

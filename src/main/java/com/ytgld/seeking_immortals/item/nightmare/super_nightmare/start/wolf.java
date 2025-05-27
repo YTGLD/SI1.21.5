@@ -7,6 +7,7 @@ import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.init.DataReg;
 import com.ytgld.seeking_immortals.init.Items;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -57,7 +58,7 @@ import java.util.function.Consumer;
  * <P>
  * 一叶孤舟
  */
-public class wolf extends nightmare {
+public class wolf extends nightmare implements SuperNightmare {
     public wolf(Properties properties) {
         super(properties);
     }
@@ -150,6 +151,7 @@ public class wolf extends nightmare {
                                                     }
 
                                                     event.setAmount(0);
+                                                    break;
                                                 }
                                             }
                                         }
@@ -184,7 +186,7 @@ public class wolf extends nightmare {
         if (compoundTag!=null) {
             int a = compoundTag.keySet().size();
             attributeModifiers.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), a, AttributeModifier.Operation.ADD_VALUE));
-            attributeModifiers.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), a, AttributeModifier.Operation.ADD_VALUE));
+            attributeModifiers.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), a/2F, AttributeModifier.Operation.ADD_VALUE));
         }
         return attributeModifiers;
 
@@ -201,7 +203,7 @@ public class wolf extends nightmare {
 
         if (stack.get(DataReg.tag)!=null){
             pTooltipComponents.accept(Component.translatable("effect.minecraft.health_boost").append(" : ").append(String.valueOf(stack.get(DataReg.tag).keySet().size())).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
-            pTooltipComponents.accept(Component.translatable("effect.minecraft.strength").append(" : ").append(String.valueOf(stack.get(DataReg.tag).keySet().size())).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
+            pTooltipComponents.accept(Component.translatable("effect.minecraft.strength").append(" : ").append(String.valueOf(stack.get(DataReg.tag).keySet().size()/2F)).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
         }else {
             pTooltipComponents.accept(Component.translatable("seeking_immortals.item.kill").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
         }

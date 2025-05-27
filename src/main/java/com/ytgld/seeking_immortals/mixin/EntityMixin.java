@@ -30,6 +30,12 @@ public abstract class EntityMixin {
                     cir.setReturnValue(true);
                 }
             }
+            if (Handler.hascurio(player, Items.disintegrating_stone.get())) {
+                if (p_20122_.is(DamageTypes.EXPLOSION)||
+                        p_20122_.is(DamageTypes.PLAYER_EXPLOSION)) {
+                    cir.setReturnValue(true);
+                }
+            }
         }
     }
 }

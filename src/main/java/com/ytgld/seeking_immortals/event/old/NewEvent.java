@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.event.old;
 
 import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
+import com.ytgld.seeking_immortals.event.CurioDamageEvent;
 import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.init.Effects;
 import com.ytgld.seeking_immortals.init.Items;
@@ -30,7 +31,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.TriState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -40,6 +40,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -57,6 +58,22 @@ import java.util.Random;
 
 public class NewEvent {
 
+    @SubscribeEvent
+    public void CurioLivingIncomingDamageEvent(LivingIncomingDamageEvent event){
+        if (event.getEntity() instanceof Player player) {
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        NeoForge.EVENT_BUS.post(new CurioDamageEvent(player, stack,event));
+                    }
+                }
+            });
+        }
+    }
 
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
@@ -99,6 +116,7 @@ public class NewEvent {
         candle.hurt(event);
         immortal.hEvt(event);
         wolf.attack(event);
+
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

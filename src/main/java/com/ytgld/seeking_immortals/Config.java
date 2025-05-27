@@ -51,7 +51,6 @@ public class Config {
         }
 
 
-
         BUILDER.build();
     }
 
@@ -70,12 +69,6 @@ public class Config {
 
 
     public   ModConfigSpec.IntValue nightmareBaseMaxItem ;
-
-
-    public   ModConfigSpec.DoubleValue x ;
-    public   ModConfigSpec.DoubleValue y ;
-    public   ModConfigSpec.DoubleValue z ;
-
 
 
     @SubscribeEvent
