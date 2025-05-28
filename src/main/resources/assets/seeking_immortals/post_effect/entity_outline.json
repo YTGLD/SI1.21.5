@@ -29,7 +29,7 @@
                 {
                     "name": "BlurDir",
                     "type": "vec2",
-                    "values": [ 1.0, 0.0 ]
+                    "values": [ 1.8, 0.0 ]
                 }
             ]
         },
@@ -48,7 +48,7 @@
                 {
                     "name": "BlurDir",
                     "type": "vec2",
-                    "values": [ 0.0, 1.0 ]
+                    "values": [ 0.0, 1.8 ]
                 }
             ]
         },
@@ -67,7 +67,7 @@
                 {
                     "name": "ColorModulate",
                     "type": "vec4",
-                    "values": [ 1.0, 1.0, 1.0, 1.0 ]
+                    "values": [ 10.0, 0.0, 10.0, 6.0 ]
                 }
             ],
             "output": "seeking_immortals:entity_outline"

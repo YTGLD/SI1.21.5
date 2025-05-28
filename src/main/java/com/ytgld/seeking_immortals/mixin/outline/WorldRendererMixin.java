@@ -2,9 +2,10 @@ package com.ytgld.seeking_immortals.mixin.outline;
 
 import com.mojang.blaze3d.framegraph.FrameGraphBuilder;
 import com.mojang.blaze3d.framegraph.FramePass;
+import com.mojang.blaze3d.opengl.GlConst;
+import com.mojang.blaze3d.opengl.GlStateManager;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
-import com.mojang.blaze3d.resource.RenderTargetDescriptor;
 import com.mojang.blaze3d.resource.ResourceHandle;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
@@ -49,19 +50,12 @@ public abstract class WorldRendererMixin implements MFramebuffer {
 
     @Inject(method = "close", at = @At(value = "RETURN"))
     private void close(CallbackInfo ci) {
-        if (this._1_21_5$entityOutlineFramebuffer != null) {
-            this._1_21_5$entityOutlineFramebuffer.destroyBuffers();
-        }
         if (_1_21_5$entityOutlineFramebuffer != null) {
             _1_21_5$entityOutlineFramebuffer.destroyBuffers();
         }
     }
     @Inject(method = "initOutline", at = @At(value = "RETURN"))
     private void loadEntityOutlinePostProcessor(CallbackInfo ci) {
-        if (this._1_21_5$entityOutlineFramebuffer != null) {
-            this._1_21_5$entityOutlineFramebuffer.destroyBuffers();
-        }
-
         this._1_21_5$entityOutlineFramebuffer = new TextureTarget(
                 "Entity Outline For Beacon", this.minecraft.getWindow().getWidth(),
                 this.minecraft.getWindow().getHeight(), true
@@ -96,6 +90,7 @@ public abstract class WorldRendererMixin implements MFramebuffer {
         ResourceHandle<RenderTarget> handle4 = this._1_21_5$defaultFramebufferSets.entityOutlineFramebuffer;
         if (handle4 != null) {
             RenderTarget rendertarget = handle4.get();
+
             RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(rendertarget.getColorTexture(),
                     0, rendertarget.getDepthTexture(), 1.0);
 
@@ -110,7 +105,18 @@ public abstract class WorldRendererMixin implements MFramebuffer {
         PostChain postchain1 = this.minecraft.getShaderManager().getPostChain(SeekingImmortalsMod.POST, Set.of(DefaultFramebufferSets.MAIN,DefaultFramebufferSets.ENTITY_OUTLINE));
 
         if (postchain1 != null) {
+//            GlStateManager._enableBlend();
+//            GlStateManager._enableDepthTest();
+//            GlStateManager._blendFuncSeparate(
+//                    GlConst.GL_SRC_ALPHA,
+//                    GlConst.GL_ONE,
+//                    GlConst.GL_ONE,
+//                    GlConst.GL_ZERO
+//            );
+//
             postchain1.addToFrame(frameGraphBuilder, i, j, this._1_21_5$defaultFramebufferSets,null);
+
+//            GlStateManager._disableBlend();
         }
 
     }
