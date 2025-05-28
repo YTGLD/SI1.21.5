@@ -67,7 +67,7 @@
                 {
                     "name": "ColorModulate",
                     "type": "vec4",
-                    "values": [ 10.0, 0.0, 10.0, 6.0 ]
+                    "values": [ 10.0, 0.1, 10.0, 6.0 ]
                 }
             ],
             "output": "seeking_immortals:entity_outline"

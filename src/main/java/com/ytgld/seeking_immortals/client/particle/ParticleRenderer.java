@@ -29,7 +29,7 @@ public final class ParticleRenderer {
 
 
 
-        RenderType renderType = MRender.LIGHTNING;
+        RenderType renderType = MRender.endBlood;
         VertexConsumer consumer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType);
 
 

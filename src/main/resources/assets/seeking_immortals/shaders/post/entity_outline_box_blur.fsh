@@ -28,7 +28,7 @@ void main() {
     color.rgb += brightness;
 
     // 调整对比度 (假设增加对比度)
-    float contrast = 1 ;// 增加1.5的对比度
+    float contrast = 2.5 ;// 增加1.5的对比度
     color.rgb = ((color.rgb - 0.5) * contrast) + 0.5;
 
     // 确保颜色值在0到1之间

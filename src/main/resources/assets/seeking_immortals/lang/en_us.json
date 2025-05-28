@@ -420,6 +420,8 @@
   "item.eye.tool.string.4": "Consume all your health and avoid this death incidentally restoring you to full health",
   "item.eye.tool.string.5": "stored blood",
   "item.eye.tool.string.6": "You need to look at mobs to get blood",
+  "item.eye.tool.string.7": "剥离你所看注视生物的灵魂",
+  "item.eye.tool.string.8": "灵魂会飞向你，若撞击到生物则造成大量负面效果和4点魔法伤害",
 
   "advancements.tooltip.eye.text": "Obtain this item",
   "advancements.tooltip.eye.hand": "Lonely and evil eyes"
