@@ -27,7 +27,7 @@ public class SeekingImmortalsMod
     public static final String MODID = "seeking_immortals";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
-            "shaders/post/entity_outline.json");
+            "entity_outline");
 
 
     public SeekingImmortalsMod(IEventBus eventBus, ModContainer modContainer) {

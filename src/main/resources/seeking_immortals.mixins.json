@@ -5,10 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "seeking_immortals.refmap.json",
   "mixins": [
-    "EntityMixin",
-    "LivingEntityMixin",
-    "MobEffectInstanceMixin",
-    "PlayerMixin"
+    "common.EntityMixin",
+    "common.LivingEntityMixin",
+    "common.MobEffectInstanceMixin",
+    "common.PlayerMixin"
   ],
   "client": [
     "client.AdvancementWidgetMixin",
@@ -16,7 +16,7 @@
     "client.ChestRendererMixin",
     "client.GameRendererMixin",
     "client.GuiGraphicsMixin",
-    "client.LevelRendererMixin"
+    "outline.WorldRendererMixin"
   ],
   "server": [],
   "injectors": {

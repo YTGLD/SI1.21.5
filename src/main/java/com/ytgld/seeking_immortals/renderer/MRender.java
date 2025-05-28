@@ -6,10 +6,10 @@ import com.mojang.blaze3d.shaders.UniformType;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 import static net.minecraft.client.renderer.RenderPipelines.*;
@@ -19,6 +19,15 @@ public abstract class MRender extends RenderType {
     public MRender(String name, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState) {
         super(name, bufferSize, affectsCrumbling, sortOnUpload, setupState, clearState);
     }
+    public static final OutputStateShard OUTLINE_TARGET = new OutputStateShard("set_outline", () -> {
+        LevelRenderer rendertarget = Minecraft.getInstance().levelRenderer;
+        if (rendertarget instanceof MFramebuffer framebuffer){
+            if (framebuffer.si1_21_4$defaultFramebufferSets()!=null) {
+                return framebuffer.si1_21_4$defaultFramebufferSets();
+            }
+        }
+        return Minecraft.getInstance().getMainRenderTarget();
+    });
 
     public static final RenderType Bluer = create(
             "light_si",
