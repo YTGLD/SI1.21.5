@@ -25,6 +25,7 @@ public class nightmare_base_insight extends nightmare implements SuperNightmare 
         super(properties);
     }
 
+
     @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
@@ -44,7 +45,6 @@ public class nightmare_base_insight extends nightmare implements SuperNightmare 
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> pTooltipComponents, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltipDisplay, pTooltipComponents,flag);
         pTooltipComponents.accept(Component.translatable("item.nightmare_base_insight.tool.string").withStyle(ChatFormatting.DARK_RED));
-        pTooltipComponents.accept(Component.translatable("item.nightmare_base_insight.tool.string.1").withStyle(ChatFormatting.DARK_RED));
 
         pTooltipComponents.accept(Component.translatable("item.nightmare_base_black_eye.tool.string.1").withStyle(ChatFormatting.RED));
         pTooltipComponents.accept(Component.translatable("item.seeking_immortals.nightmare_base_insight_collapse").withStyle(ChatFormatting.DARK_RED));

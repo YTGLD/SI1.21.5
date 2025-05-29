@@ -10,11 +10,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
-    @Inject(at = @At("RETURN"), method = "getMaxHealth", cancellable = true)
-    private void SeekingImmortalscreateAttributes(CallbackInfoReturnable<Float> cir){
-        LivingEntity living = (LivingEntity) (Object) this;
-        if (Handler.hascurio(living, Items.apple.get())){
-            cir.setReturnValue(30f);
-        }
-    }
+//    @Inject(at = @At("RETURN"), method = "getMaxHealth", cancellable = true)
+//    private void SeekingImmortalscreateAttributes(CallbackInfoReturnable<Float> cir){
+//        LivingEntity living = (LivingEntity) (Object) this;
+//        if (Handler.hascurio(living, Items.apple.get())){
+//            cir.setReturnValue(30f);
+//        }
+//    }
 }

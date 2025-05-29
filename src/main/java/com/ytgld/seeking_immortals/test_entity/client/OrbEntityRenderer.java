@@ -3,6 +3,7 @@ package com.ytgld.seeking_immortals.test_entity.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.ytgld.seeking_immortals.client.particle.blood;
+import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
 import com.ytgld.seeking_immortals.test_entity.state.OrbEntityRenderState;
 import com.ytgld.seeking_immortals.renderer.MRender;
@@ -29,10 +30,15 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         double z = Mth.lerp(partialTick, renderState.entity.zOld, renderState.entity.getZ());
         poseStack.pushPose();
         poseStack.translate(renderState.entity.getX()-x, renderState.entity.getY()-y,renderState.entity.getZ() -z);
-        renderSphere1(poseStack,bufferSource.getBuffer(MRender.endBlood),240,0.15f);
-        renderSphere1(poseStack,bufferSource.getBuffer(MRender.endBloodOutline),240,0.15f);
-        setT(poseStack,renderState.entity,bufferSource.getBuffer(MRender.lightning_color_outline));
+
+        if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
+            renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBloodOutline), 240, 0.15f);
+            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
+        }
+
         setT(poseStack,renderState.entity,bufferSource.getBuffer(MRender.endBlood));
+        renderSphere1(poseStack,bufferSource.getBuffer(MRender.endBlood),240,0.15f);
+
         poseStack.popPose();
 
     }

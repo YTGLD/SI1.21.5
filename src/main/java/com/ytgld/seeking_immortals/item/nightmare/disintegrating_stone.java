@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.item.nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
 import net.minecraft.ChatFormatting;
@@ -49,7 +50,7 @@ public class disintegrating_stone extends nightmare
     public Multimap<Holder<Attribute>, AttributeModifier> getSss() {
         Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = HashMultimap.create();
         float size = ModList.get().size();
-        size/=75f;
+        size *= (float) (Config.SERVER.disintegrating_stone.getAsDouble() / 100f);
         if (size > 18) {
             size = 18;
         }

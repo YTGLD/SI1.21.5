@@ -240,7 +240,7 @@
 
 
   "item.seeking_immortals.nightmare_base_insight":"§4Nightmare Insight",
-  "item.nightmare_base_insight.tool.string": "Reduce the enchantment level of enchanted items by 1",
+  "item.nightmare_base_insight.tool.string": "Reduce the enchantment level of enchanted items by 2",
   "item.nightmare_base_insight.tool.string.1": "Reduce the enchantment level of enchanted items by 50%",
 
   "advancements.tooltip.nightmare_base_insight.text": "Obtain this item",
@@ -281,7 +281,7 @@
 
 
  "item.seeking_immortals.apple": "§4Skewed Fruit",
- "item.apple.tool.string": "Max Health is fixed at 30",
+ "item.apple.tool.string": "Max Health - 85%",
  "item.apple.tool.string.1": "Damage taken is fixed at 2",
  "item.apple.tool.string.2": "Attack damage is fixed at 10",
 

@@ -1,6 +1,8 @@
 package com.ytgld.seeking_immortals;
 
 import com.mojang.logging.LogUtils;
+import com.ytgld.seeking_immortals.config.ClientConfig;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.test_entity.client.OrbEntityRenderer;
 import com.ytgld.seeking_immortals.client.particle.ParticleRenderer;
 import com.ytgld.seeking_immortals.client.particle.blood;
@@ -48,7 +50,8 @@ public class SeekingImmortalsMod
         Items.ITEMS.register(eventBus);
 
         Tab.TABS.register(eventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.Common);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT);
     }
     public static RenderLevelStageEvent.Stage stage_particles ;
 

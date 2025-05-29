@@ -2,7 +2,7 @@ package com.ytgld.seeking_immortals.item.nightmare.super_nightmare.insight;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.ytgld.seeking_immortals.Config;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;

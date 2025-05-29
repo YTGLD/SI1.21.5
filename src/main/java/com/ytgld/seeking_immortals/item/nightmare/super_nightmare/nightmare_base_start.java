@@ -3,6 +3,7 @@ package com.ytgld.seeking_immortals.item.nightmare.super_nightmare;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.ytgld.seeking_immortals.Handler;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.init.Items;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
@@ -70,7 +71,8 @@ public class nightmare_base_start extends nightmare implements SuperNightmare {
 
     public Multimap<Holder<Attribute>, AttributeModifier> gets(SlotContext slotContext) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        linkedHashMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        linkedHashMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
+                -Config.SERVER.nightmare_base_start.getAsInt()/100f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         return linkedHashMultimap;
     }
 

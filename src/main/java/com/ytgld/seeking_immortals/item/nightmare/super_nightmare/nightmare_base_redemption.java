@@ -45,6 +45,7 @@ public class nightmare_base_redemption extends nightmare implements SuperNightma
 
 
 
+
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         super.curioTick(slotContext, stack);

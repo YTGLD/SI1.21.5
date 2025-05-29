@@ -1,6 +1,6 @@
 package com.ytgld.seeking_immortals.item.nightmare.super_nightmare.fool;
 
-import com.ytgld.seeking_immortals.Config;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.init.Items;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;

@@ -26,6 +26,7 @@ public class nightmare_base_black_eye extends nightmare implements SuperNightmar
         super(properties);
     }
 
+
     @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){

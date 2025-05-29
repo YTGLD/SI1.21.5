@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.mixin.client;
 
 import com.mojang.blaze3d.resource.CrossFrameResourcePool;
 import com.ytgld.seeking_immortals.Handler;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.init.Items;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
@@ -42,32 +43,34 @@ public abstract class GameRendererMixin {
     @Inject(at = @At("RETURN"), method = "render")
     public void init(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci) {
 
-       if (mainCamera.getEntity() instanceof Player player) {
-           if (Handler.hascurio(player,Items.nightmare_base_black_eye.get())){
-               if (player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").isPresent()) {
-                   float f = player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").get();
-                   if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player) instanceof LivingEntity) {
-                       if (f < 5) {
-                           player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", f + 0.1f);
-                       }
-                   } else {
-                       if (f > 0) {
-                           player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", f - 0.05f);
-                       }
-                   }
-                   if (!(f < 1.0F)) {
-                       PostChain postchain = this.minecraft.getShaderManager().getPostChain(BLUR_POST_CHAIN_ID, LevelTargetBundle.MAIN_TARGETS);
-                       if (postchain != null) {
-                           postchain.process(this.minecraft.getMainRenderTarget(), this.resourcePool, (p_409027_) -> {
-                               p_409027_.setUniform("Radius", f);
-                           });
-                       }
-                   }
-               }else {
-                   player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye",0f);
-               }
-           }
-       }
+        if (Config.SERVER.nightmare_base_black_eye.get()) {
+            if (mainCamera.getEntity() instanceof Player player) {
+                if (Handler.hascurio(player, Items.nightmare_base_black_eye.get())) {
+                    if (player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").isPresent()) {
+                        float f = player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").get();
+                        if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player) instanceof LivingEntity) {
+                            if (f < 5) {
+                                player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", f + 0.1f);
+                            }
+                        } else {
+                            if (f > 0) {
+                                player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", f - 0.05f);
+                            }
+                        }
+                        if (!(f < 1.0F)) {
+                            PostChain postchain = this.minecraft.getShaderManager().getPostChain(BLUR_POST_CHAIN_ID, LevelTargetBundle.MAIN_TARGETS);
+                            if (postchain != null) {
+                                postchain.process(this.minecraft.getMainRenderTarget(), this.resourcePool, (p_409027_) -> {
+                                    p_409027_.setUniform("Radius", f);
+                                });
+                            }
+                        }
+                    } else {
+                        player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", 0f);
+                    }
+                }
+            }
+        }
     }
     @Unique
     public Entity moonstone1_21_1$getPlayerLookTarget(Level level, LivingEntity living) {

@@ -1,6 +1,7 @@
 package com.ytgld.seeking_immortals.item.nightmare;
 
 import com.ytgld.seeking_immortals.Handler;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.init.Effects;
 import com.ytgld.seeking_immortals.init.Items;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.INightmare;
@@ -59,7 +60,7 @@ public class immortal extends Item implements ICurioItem , INightmare {
             if (event.getEntity() instanceof Player player){
                 int lvl = Mth.nextInt(RandomSource.create(),1,100);
                 if (Handler.hascurio(player, Items.immortal.get())){
-                    if (lvl<=80){
+                    if (lvl<= Config.SERVER.immortal.getAsInt()){
                         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.NEUTRAL, 1F, 1F);
                         if (living.getHealth()<=living.getMaxHealth()*0.7f){
                             living.hurt(living.damageSources().dryOut(),event.getAmount()*0.5f);

@@ -1,11 +1,11 @@
 package com.ytgld.seeking_immortals.item.nightmare;
 
 import com.ytgld.seeking_immortals.Handler;
+import com.ytgld.seeking_immortals.config.Config;
 import com.ytgld.seeking_immortals.event.CurioDamageEvent;
 import com.ytgld.seeking_immortals.init.DataReg;
 import com.ytgld.seeking_immortals.init.Entitys;
 import com.ytgld.seeking_immortals.init.Items;
-import com.ytgld.seeking_immortals.init.Particles;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
 import net.minecraft.ChatFormatting;
@@ -57,7 +57,6 @@ public class eye extends nightmare {
     public eye(Properties properties) {
         super(properties);
     }
-
     public static void CurioDamageEvent(CurioDamageEvent event){
         Player player = event.getPlayer();
         ItemStack stack = event.getStack();
@@ -83,7 +82,7 @@ public class eye extends nightmare {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (look(slotContext.entity().level(), slotContext.entity()) instanceof LivingEntity entity) {
             if (entity.isAlive()){
-                if (slotContext.entity().tickCount%10==0) {
+                if (slotContext.entity().tickCount % Config.SERVER.eye.getAsInt()==0) {
                     if (!slotContext.entity().level().isClientSide) {
                         entity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 40, 1));
                         entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 40, 1));
@@ -187,6 +186,7 @@ public class eye extends nightmare {
             pTooltipComponents.accept(Component.translatable("item.eye.tool.string.6").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
         }
     }
+
 
 }
 
