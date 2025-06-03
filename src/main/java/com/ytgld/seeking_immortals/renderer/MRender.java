@@ -6,11 +6,16 @@ import com.mojang.blaze3d.shaders.UniformType;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.TriState;
+
+import java.util.function.Function;
 
 import static net.minecraft.client.renderer.RenderPipelines.*;
 
@@ -38,6 +43,17 @@ public abstract class MRender extends RenderType {
         }
         return Minecraft.getInstance().getMainRenderTarget();
     });
+
+    public static final OutputStateShard Distorted = new OutputStateShard("distorted", () -> {
+        LevelRenderer rendertarget = Minecraft.getInstance().levelRenderer;
+        if (rendertarget instanceof MDistorted framebuffer){
+            if (framebuffer.si1_21_4$MDistorted()!=null) {
+                framebuffer.si1_21_4$MDistorted().copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+                return framebuffer.si1_21_4$MDistorted();
+            }
+        }
+        return Minecraft.getInstance().getMainRenderTarget();
+    });
     public static final RenderType Bluer = create(
             "light_si",
             1536,
@@ -47,14 +63,6 @@ public abstract class MRender extends RenderType {
             RenderType.CompositeState.builder().setOutputState(CAN_LOOK_BLOCK).createCompositeState(false)
     );
 
-    public static final RenderType LIGHTNING = create(
-            "lightning",
-            1536,
-            false,
-            true,
-            RenderPs.LIGHTNINGBloodRenderPipeline,
-            RenderType.CompositeState.builder().setOutputState(WEATHER_TARGET).createCompositeState(false)
-    );
     public static final RenderType endBlood = create(
             "end_si",
             1536,
@@ -93,6 +101,21 @@ public abstract class MRender extends RenderType {
             true,
             RenderPs.LIGHTNINGBloodRenderPipeline,
             RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false)
+    );
+
+    public static final Function<ResourceLocation, RenderType> Distorted_ENTITY_SOLID = Util.memoize(
+            p_404030_ -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_404030_, TriState.FALSE, false))
+                        .setLightmapState(LIGHTMAP)
+                        .setOverlayState(OVERLAY)
+                        .createCompositeState(true);
+                return create("distorted_entity",
+                        1536,
+                        true,
+                        false,
+                        RenderPipelines.ENTITY_SOLID, rendertype$compositestate);
+            }
     );
     public static class RenderPs{
         public static final RenderPipeline endBloodRenderPipeline=

@@ -17,6 +17,7 @@
     "client.ChestRendererMixin",
     "client.GameRendererMixin",
     "client.GuiGraphicsMixin",
+    "outline.Distorted",
     "outline.WorldRendererMixin"
   ],
   "server": [],

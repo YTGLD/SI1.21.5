@@ -1,0 +1,78 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "seeking_immortals:post/sobel",
+      "fragment_shader": "seeking_immortals:post/entity_sobel",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "seeking_immortals:distorted"
+        }
+      ],
+      "output": "swap"
+    },
+    {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/distorted",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": true
+        }
+      ],
+      "output": "seeking_immortals:distorted",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 1.8, 0.0 ]
+        }
+      ]
+    },
+
+
+    {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/distorted",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "seeking_immortals:distorted",
+          "bilinear": true
+        }
+      ],
+      "output": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 0.0, 1.8 ]
+        }
+      ]
+    },
+
+
+    {
+      "vertex_shader": "seeking_immortals:post/blit",
+      "fragment_shader": "seeking_immortals:post/blit",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap"
+        }
+      ],
+      "uniforms": [
+        {
+          "name": "ColorModulate",
+          "type": "vec4",
+          "values": [ 10.0, 0.1, 10.0, 6.0 ]
+        }
+      ],
+      "output": "seeking_immortals:distorted"
+    }
+  ]
+}

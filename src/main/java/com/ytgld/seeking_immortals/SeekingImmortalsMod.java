@@ -35,6 +35,8 @@ public class SeekingImmortalsMod
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
             "entity_outline");
 
+    public static final ResourceLocation Distorted = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
+            "distorted");
 
     public SeekingImmortalsMod(IEventBus eventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(new NewEvent());

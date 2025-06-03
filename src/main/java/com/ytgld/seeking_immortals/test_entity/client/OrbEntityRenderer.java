@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.test_entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.ytgld.seeking_immortals.SeekingImmortalsMod;
 import com.ytgld.seeking_immortals.client.particle.blood;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +34,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         poseStack.translate(renderState.entity.getX()-x, renderState.entity.getY()-y,renderState.entity.getZ() -z);
 
         if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
-            renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBloodOutline), 240, 0.15f);
+            renderSphere1(poseStack, bufferSource.getBuffer(MRender.Distorted_ENTITY_SOLID.apply(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"textures/black.png"))), 240, 0.15f);
             setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
         }
 
