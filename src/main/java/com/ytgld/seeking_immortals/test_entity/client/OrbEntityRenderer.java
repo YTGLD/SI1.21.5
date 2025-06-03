@@ -34,7 +34,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         poseStack.translate(renderState.entity.getX()-x, renderState.entity.getY()-y,renderState.entity.getZ() -z);
 
         if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
-            renderSphere1(poseStack, bufferSource.getBuffer(MRender.Distorted_ENTITY_SOLID.apply(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"textures/black.png"))), 240, 0.15f);
+            renderSphere1(poseStack, bufferSource.getBuffer(MRender.DistortedRenderType), 240, 0.15f);
             setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
         }
 

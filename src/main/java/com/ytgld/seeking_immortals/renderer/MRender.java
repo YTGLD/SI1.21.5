@@ -103,20 +103,13 @@ public abstract class MRender extends RenderType {
             RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false)
     );
 
-    public static final Function<ResourceLocation, RenderType> Distorted_ENTITY_SOLID = Util.memoize(
-            p_404030_ -> {
-                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
-                        .setTextureState(new RenderStateShard.TextureStateShard(p_404030_, TriState.FALSE, false))
-                        .setLightmapState(LIGHTMAP)
-                        .setOverlayState(OVERLAY)
-                        .createCompositeState(true);
-                return create("distorted_entity",
-                        1536,
-                        true,
-                        false,
-                        RenderPipelines.ENTITY_SOLID, rendertype$compositestate);
-            }
-    );
+    public static final RenderType DistortedRenderType = create(
+            "distorted_render_type",
+            1536,
+            false,
+            true,
+            RenderPs.LIGHTNINGBloodRenderPipeline,
+            RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false));
     public static class RenderPs{
         public static final RenderPipeline endBloodRenderPipeline=
                 (RenderPipeline

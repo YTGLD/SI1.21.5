@@ -55,7 +55,7 @@ public abstract class Distorted implements MDistorted {
     @Inject(method = "initOutline", at = @At(value = "RETURN"))
     private void loadEntityOutlinePostProcessor(CallbackInfo ci) {
         this._1_21_5$entityOutlineFramebuffer = new TextureTarget(
-                "Entity Outline For Beacon", this.minecraft.getWindow().getWidth(),
+                "Entity Outline For Distorted", this.minecraft.getWindow().getWidth(),
                 this.minecraft.getWindow().getHeight(), true
         );
     }
@@ -75,13 +75,13 @@ public abstract class Distorted implements MDistorted {
     private void renderMain(FrameGraphBuilder frameGraphBuilder, Frustum frustum, Camera camera, Matrix4f frustumMatrix, Matrix4f projectionMatrix, FogParameters fogParameters, boolean renderBlockOutline, boolean renderEntityOutline, DeltaTracker deltaTracker, ProfilerFiller profiler, CallbackInfo ci) {
         if (this._1_21_5$entityOutlineFramebuffer != null) {
             this._1_21_5$defaultFramebufferSets.entityOutlineFramebuffer =
-                    frameGraphBuilder.importExternal("entity_outline", this._1_21_5$entityOutlineFramebuffer);
+                    frameGraphBuilder.importExternal("distorted", this._1_21_5$entityOutlineFramebuffer);
         }
     }
 
     @Inject(method = "addMainPass", at = @At(value = "RETURN"))
     private void renderMain2INVOKE_ASSIGN(FrameGraphBuilder frameGraphBuilder, Frustum frustum, Camera camera, Matrix4f frustumMatrix, Matrix4f projectionMatrix, FogParameters fogParameters, boolean renderBlockOutline, boolean renderEntityOutline, DeltaTracker deltaTracker, ProfilerFiller profiler, CallbackInfo ci) {
-        FramePass framepass = frameGraphBuilder.addPass("main_seeking");
+        FramePass framepass = frameGraphBuilder.addPass("main_distorted");
 
         this.targets.entityOutline = framepass.readsAndWrites(this.targets.entityOutline);
 
