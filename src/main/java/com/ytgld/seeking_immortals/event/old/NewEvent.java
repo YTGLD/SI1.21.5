@@ -26,6 +26,7 @@ import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.wolf;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.end_bone;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.nightmare_base_stone_brain;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.nightmare_base_stone_virus;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.the_erosion;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -116,7 +117,7 @@ public class NewEvent {
         candle.hurt(event);
         immortal.hEvt(event);
         wolf.attack(event);
-
+        the_erosion.hur(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

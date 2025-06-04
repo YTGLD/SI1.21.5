@@ -3,9 +3,10 @@ package com.ytgld.seeking_immortals;
 import com.mojang.logging.LogUtils;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.config.Config;
+import com.ytgld.seeking_immortals.test_entity.client.ErosionSoulRenderer;
 import com.ytgld.seeking_immortals.test_entity.client.OrbEntityRenderer;
 import com.ytgld.seeking_immortals.client.particle.ParticleRenderer;
-import com.ytgld.seeking_immortals.client.particle.blood;
+import com.ytgld.seeking_immortals.client.particle.black;
 import com.ytgld.seeking_immortals.event.now.EventHandler;
 import com.ytgld.seeking_immortals.event.old.AdvancementEvt;
 import com.ytgld.seeking_immortals.event.old.NewEvent;
@@ -61,18 +62,19 @@ public class SeekingImmortalsMod
     public static class ClientModEvents {
         @SubscribeEvent
         public static void RegisterStageEvent(RenderLevelStageEvent.RegisterStageEvent event) {
-            RenderType renderType = MRender.endBloodOutline;
-            stage_particles = event.register(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID, "seeking_line"),
+            RenderType renderType = MRender.black;
+            stage_particles = event.register(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID, "black"),
                     renderType);
         }
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
-            event.registerSpriteSet(Particles.blood.get(), blood.Provider::new);
+            event.registerSpriteSet(Particles.black.get(), black.Provider::new);
 
         }
         @SubscribeEvent
         public static void RegisterRenderPipelinesEvent(EntityRenderersEvent.RegisterRenderers event){
             event.registerEntityRenderer(Entitys.orb_entity.get(), OrbEntityRenderer::new);
+            event.registerEntityRenderer(Entitys.erosion_soul.get(), ErosionSoulRenderer::new);
 
         }
         @SubscribeEvent

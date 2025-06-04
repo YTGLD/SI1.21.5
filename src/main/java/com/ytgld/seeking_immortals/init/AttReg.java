@@ -10,18 +10,18 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AttReg {
     public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, SeekingImmortalsMod.MODID);
     public static final DeferredHolder<Attribute,?> alL_attack = REGISTRY.register("allattack",()->{
-        return new RangedAttribute("attribute.name.moonstone.allattack", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.seeking_immortals.allattack", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> heal = REGISTRY.register("heal",()->{
-        return new RangedAttribute("attribute.name.moonstone.heal", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.seeking_immortals.heal", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> cit = REGISTRY.register("cit",()->{
-        return new RangedAttribute("attribute.name.moonstone.cit", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.seeking_immortals.cit", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> dig = REGISTRY.register("dig",()->{
-        return new RangedAttribute("attribute.name.moonstone.dig", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.seeking_immortals.dig", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> hurt = REGISTRY.register("hurt",()->{
-        return new RangedAttribute("attribute.name.moonstone.res", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.seeking_immortals.res", 1, -1024, 1024).setSyncable(true);
     });
 }

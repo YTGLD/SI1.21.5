@@ -10,12 +10,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class Particles {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES;
-    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> blood;
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> black;
 
     static {
         PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, SeekingImmortalsMod.MODID);
 
-        blood = PARTICLE_TYPES.register("blood", ()->{
+        black = PARTICLE_TYPES.register("black", ()->{
             return new SimpleParticleType(false);
         });
     }

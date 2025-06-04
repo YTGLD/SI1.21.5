@@ -29,6 +29,7 @@ import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.*;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_pod;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_power;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.*;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.the_erosion;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -79,6 +80,7 @@ public class Items {
     public static final DeferredHolder<Item,?> hypocritical_self_esteem =ITEMS.registerItem("hypocritical_self_esteem", hypocritical_self_esteem::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> disintegrating_stone =ITEMS.registerItem("disintegrating_stone", disintegrating_stone::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> eye =ITEMS.registerItem("eye", eye::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> the_erosion =ITEMS.registerItem("the_erosion", the_erosion::new,new Item.Properties().stacksTo(1));
 
     public static final DeferredHolder<Item,?> nightmare_base_start_power =ITEMS.registerItem("nightmare_base_start_power", nightmare_base_start_power::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> tricky_puppets =ITEMS.registerItem("tricky_puppets", tricky_puppets::new,new Item.Properties().stacksTo(1));

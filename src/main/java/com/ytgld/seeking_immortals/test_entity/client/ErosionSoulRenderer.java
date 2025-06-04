@@ -4,8 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.renderer.MRender;
-import com.ytgld.seeking_immortals.test_entity.orb_entity;
-import com.ytgld.seeking_immortals.test_entity.state.OrbEntityRenderState;
+import com.ytgld.seeking_immortals.test_entity.erosion_soul;
+import com.ytgld.seeking_immortals.test_entity.state.ErosionSoulState;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -15,13 +15,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.client.renderer.entity.EntityRenderer<T, OrbEntityRenderState> {
-    public OrbEntityRenderer(EntityRendererProvider.Context context) {
+public class ErosionSoulRenderer <T extends erosion_soul> extends net.minecraft.client.renderer.entity.EntityRenderer<T, ErosionSoulState> {
+    public ErosionSoulRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public void render(OrbEntityRenderState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void render(ErosionSoulState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
 
         float partialTick = renderState.partialTick;
 
@@ -30,23 +30,15 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         double z = Mth.lerp(partialTick, renderState.entity.zOld, renderState.entity.getZ());
         poseStack.pushPose();
         poseStack.translate(renderState.entity.getX()-x, renderState.entity.getY()-y,renderState.entity.getZ() -z);
-
         if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
-            if (renderState.entity.canSee)
-                renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBloodOutline), 240, 0.15f);
-            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
+            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.black));
         }
-
-        setT(poseStack,renderState.entity,bufferSource.getBuffer(MRender.endBlood));
-        if (renderState.entity.canSee)
-            renderSphere1(poseStack,bufferSource.getBuffer(MRender.endBlood),240,0.15f);
-
         poseStack.popPose();
 
     }
 
     private  static void setT(PoseStack matrices,
-                              orb_entity entity,
+                              erosion_soul entity,
                               VertexConsumer vertexConsumers)
     {
         matrices.pushPose();
@@ -88,29 +80,29 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
     private static void addSquare(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
         // 添加四个顶点来绘制一个矩形
         vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
-                .setColor(255 ,0 ,255, (int) (alpha * 255))
-                .setUv2(240, 240)
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
+                .setUv2(0,0)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
-                .setColor(255 ,0 ,0, (int) (alpha * 255))
-                .setUv2(240, 240)
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
+                .setUv2(0,0)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
-                .setColor(255 ,0 ,0, (int) (alpha * 255))
-                .setUv2(240, 240)
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
+                .setUv2(0,0)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
-                .setColor(	255 ,0 ,255, (int) (alpha * 255))
-                .setUv2(240, 240)
+                .setColor(	0 ,0 ,0, (int) (alpha * 255))
+                .setUv2(0,0)
                 .setNormal(0, 0, 1);
     }
 
     @Override
-    public @NotNull OrbEntityRenderState createRenderState() {
-        return new OrbEntityRenderState();
+    public @NotNull ErosionSoulState createRenderState() {
+        return new ErosionSoulState();
     }
 
     @Override
@@ -119,43 +111,10 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
     }
 
     @Override
-    public void extractRenderState(T p_entity, OrbEntityRenderState reusedState, float partialTick) {
+    public void extractRenderState(T p_entity, ErosionSoulState reusedState, float partialTick) {
         reusedState.entity = p_entity;
         reusedState.partialTick = partialTick;
     }
-    public void renderSphere1(@NotNull PoseStack matrices, @NotNull VertexConsumer vertexConsumer, int light, float s) {
-        int stacks = 20;
-        int slices = 20;
-        for (int i = 0; i < stacks; ++i) {
-            float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
-            float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
-
-            for (int j = 0; j < slices; ++j) {
-                float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
-                float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
-
-                float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
-                float y0 = s * (float) Math.cos(phi0);
-                float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
-
-                float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
-                float y1 = s * (float) Math.cos(phi0);
-                float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
-
-                float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
-                float y2 = s * (float) Math.cos(phi1);
-                float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
-
-                float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
-                float y3 = s * (float) Math.cos(phi1);
-                float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
-
-                vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-            }
-        }
-    }
 }
+
 

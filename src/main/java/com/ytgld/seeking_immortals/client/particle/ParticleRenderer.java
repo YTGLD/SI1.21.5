@@ -29,12 +29,12 @@ public final class ParticleRenderer {
 
 
 
-        RenderType renderType = MRender.endBlood;
+        RenderType renderType = MRender.black;
         VertexConsumer consumer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType);
 
 
         Minecraft.getInstance().particleEngine.iterateParticles(particle -> {
-            if (particle instanceof blood blood) {
+            if (particle instanceof black blood) {
                 poseStack.pushPose();
                 var offset = particle.getPos().subtract(camPos);
                 poseStack.translate(offset.x, offset.y, offset.z);
@@ -48,7 +48,7 @@ public final class ParticleRenderer {
         poseStack.popPose();
     }
     private  static void setT(PoseStack matrices,
-                      blood entity,
+                      black entity,
                       VertexConsumer vertexConsumers)
     {
         matrices.pushPose();
@@ -90,22 +90,22 @@ public final class ParticleRenderer {
     private static void addSquare(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
         // 添加四个顶点来绘制一个矩形
         vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
-                .setColor(255 ,0 ,255, (int) (alpha * 255))
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
-                .setColor(255 ,0 ,255, (int) (alpha * 255))
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
-                .setColor(255 ,0 ,255, (int) (alpha * 255))
+                .setColor(0 ,0 ,0, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
         vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
-                .setColor(	255 ,0 ,255, (int) (alpha * 255))
+                .setColor(	0 ,0 ,0, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
     }

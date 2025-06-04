@@ -29,7 +29,7 @@
         {
           "name": "BlurDir",
           "type": "vec2",
-          "values": [ 5, 0.0 ]
+          "values": [ 2.8, 0.0 ]
         }
       ]
     },
@@ -50,7 +50,7 @@
         {
           "name": "BlurDir",
           "type": "vec2",
-          "values": [ 0.0, 5 ]
+          "values": [ 0.0, 2.8 ]
         }
       ]
     },
@@ -69,7 +69,7 @@
         {
           "name": "ColorModulate",
           "type": "vec4",
-          "values": [ 10.0, 0.1, 10.0, 6.0 ]
+          "values": [ 0.0, 0.0, 0.0, 33 ]
         }
       ],
       "output": "seeking_immortals:distorted"

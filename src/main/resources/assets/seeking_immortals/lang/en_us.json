@@ -20,6 +20,7 @@
   "attribute.name.seeking_immortals.cit": "criticalDamage",
   "attribute.name.seeking_immortals.heal": "healing",
   "attribute.name.seeking_immortals.dig": "diggingSpeed",
+  "attribute.name.seeking_immortals.res": "Take damage",
 
 
 
@@ -409,6 +410,14 @@
 
 
 
+"item.seeking_immortals.the_erosion":"§4 Hexelous Orb",
+  "item.the_erosion.tool.string": "After taking damage, a certain amount of black gas is released according to a single damage, and the black gas hits the target, dealing a large amount of damage and slowing the target",
+  "item.the_erosion.tool.string.1": "20% increased damage and health",
+
+"advancements.tooltip.the_erosion.text": "Get it",
+  "advancements.tooltip.the_erosion.hand": "Dark Spell!",
+
+"seeking_immortals.jei.item.seeking_immortals.the_erosion": "",
 
 
 

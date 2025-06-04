@@ -353,6 +353,7 @@
   "attribute.name.seeking_immortals.cit": "暴击伤害",
   "attribute.name.seeking_immortals.heal": "治疗",
   "attribute.name.seeking_immortals.dig": "挖掘速度",
+  "attribute.name.seeking_immortals.res": "受到伤害",
 
   "seeking_immortals.jei.item.seeking_immortals.nightmare_base_start_power": "杀死坚守者",
   "seeking_immortals.jei.item.seeking_immortals.nightmare_base_start_egg": "杀死嗅探兽",
@@ -414,6 +415,17 @@
   "advancements.tooltip.nightmare_base_black_eye.hand": "永远凝视",
   "advancements.tooltip.nightmare_base_stone_virus.text": "获得Nightecora病毒",
   "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体",
+
+
+  "item.seeking_immortals.the_erosion":"§4邪术法球",
+  "item.the_erosion.tool.string": "受伤后根据单次伤害释放一定数量的黑气，黑气击中造成大量伤害并减速目标",
+  "item.the_erosion.tool.string.1": "增加20%受到伤害和生命值",
+
+  "advancements.tooltip.the_erosion.text": "获得它",
+  "advancements.tooltip.the_erosion.hand": "黑暗法术!",
+
+  "seeking_immortals.jei.item.seeking_immortals.the_erosion": "",
+
 
   "item.seeking_immortals.eye":"§4无名邪眼",
   "item.eye.tool.string.1": "撕咬你目视的生物，并削弱它们和恢复你的生命值",

@@ -22,6 +22,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.eye.get()));
 
                 b.accept(new ItemStack(Items.nightmare_base.get()));
+                b.accept(new ItemStack(Items.the_erosion.get()));
 
 
                 b.accept(new ItemStack(Items.nightmare_base_black_eye.get()));

@@ -103,13 +103,13 @@ public abstract class MRender extends RenderType {
             RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false)
     );
 
-    public static final RenderType DistortedRenderType = create(
+    public static final RenderType black = create(
             "distorted_render_type",
             1536,
             false,
             true,
             RenderPs.LIGHTNINGBloodRenderPipeline,
-            RenderType.CompositeState.builder().setOutputState(OUTLINE_TARGET).createCompositeState(false));
+            RenderType.CompositeState.builder().setOutputState(Distorted).createCompositeState(false));
     public static class RenderPs{
         public static final RenderPipeline endBloodRenderPipeline=
                 (RenderPipeline
