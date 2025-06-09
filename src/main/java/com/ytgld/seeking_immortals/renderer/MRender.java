@@ -133,35 +133,5 @@ public abstract class MRender extends RenderType {
                         .withBlend(BlendFunction.LIGHTNING)
                         .withVertexFormat(DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.QUADS).build());
 
-
-        public static final RenderPipeline LIGHTMAP =(
-                RenderPipeline.builder()
-                        .withLocation("pipeline/lightmap_si")
-                        .withVertexShader(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"core/blit_screen"))
-                        .withFragmentShader(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"core/lightmap"))
-
-
-                        .withUniform("positionL",UniformType.VEC3)
-                        .withUniform("radiusL",UniformType.FLOAT)
-                        .withUniform("colorL",UniformType.VEC3)
-                        .withUniform("Time",UniformType.FLOAT)
-                        .withUniform("fragPos",UniformType.VEC3)
-
-
-
-                        .withUniform("AmbientLightFactor", UniformType.FLOAT)
-                        .withUniform("SkyFactor", UniformType.FLOAT)
-                        .withUniform("BlockFactor", UniformType.FLOAT)
-                        .withUniform("UseBrightLightmap", UniformType.INT)
-                        .withUniform("SkyLightColor", UniformType.VEC3)
-                        .withUniform("NightVisionFactor", UniformType.FLOAT)
-                        .withUniform("DarknessScale", UniformType.FLOAT)
-                        .withUniform("DarkenWorldFactor", UniformType.FLOAT)
-                        .withUniform("BrightnessFactor", UniformType.FLOAT)
-                        .withVertexFormat(DefaultVertexFormat.POSITION, VertexFormat.Mode.QUADS)
-                        .withDepthWrite(false)
-                        .withDepthTestFunction(DepthTestFunction.NO_DEPTH_TEST)
-                        .build()
-        );
     }
 }

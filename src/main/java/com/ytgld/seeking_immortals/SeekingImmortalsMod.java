@@ -81,7 +81,6 @@ public class SeekingImmortalsMod
         public static void RegisterRenderPipelinesEvent(RegisterRenderPipelinesEvent event) {
             event.registerPipeline(MRender.RenderPs.endBloodRenderPipeline);
             event.registerPipeline(MRender.RenderPs.LIGHTNINGBloodRenderPipeline);
-            event.registerPipeline(MRender.RenderPs.LIGHTMAP);
         }
     }
 }
