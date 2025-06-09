@@ -1,6 +1,8 @@
 package com.ytgld.seeking_immortals.init;
 
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
+import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.a_thousand_evil_eyeballs;
+import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.abnormal_eye;
 import com.ytgld.seeking_immortals.item.nightmare.disintegrating_stone;
 import com.ytgld.seeking_immortals.item.nightmare.eye;
 import com.ytgld.seeking_immortals.item.nightmare.immortal;
@@ -81,6 +83,8 @@ public class Items {
     public static final DeferredHolder<Item,?> disintegrating_stone =ITEMS.registerItem("disintegrating_stone", disintegrating_stone::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> eye =ITEMS.registerItem("eye", eye::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> the_erosion =ITEMS.registerItem("the_erosion", the_erosion::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> abnormal_eye =ITEMS.registerItem("abnormal_eye", abnormal_eye::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> a_thousand_evil_eyeballs =ITEMS.registerItem("a_thousand_evil_eyeballs", a_thousand_evil_eyeballs::new,new Item.Properties().stacksTo(1));
 
     public static final DeferredHolder<Item,?> nightmare_base_start_power =ITEMS.registerItem("nightmare_base_start_power", nightmare_base_start_power::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> tricky_puppets =ITEMS.registerItem("tricky_puppets", tricky_puppets::new,new Item.Properties().stacksTo(1));

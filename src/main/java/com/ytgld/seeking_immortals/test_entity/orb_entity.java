@@ -94,9 +94,9 @@ public class orb_entity extends ThrowableItemProjectile {
                                     playerPos.y + range,
                                     playerPos.z + range));
             for (LivingEntity living : entities) {
-                if (this.getOwner() != null && !living.is(this.getOwner())) {
+                if (this.getOwner() != null && !living.is(this.getOwner())&&this.getOwner() instanceof Player player) {
                     if (this.tickCount > 15) {
-                        living.hurt(living.damageSources().magic(), 4);
+                        living.hurt(living.damageSources().playerAttack(player), 4);
                         living.invulnerableTime = 0;
                         living.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 100, 1));
                         living.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));

@@ -25,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +48,12 @@ public abstract class GameRendererMixin {
                     if (player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").isPresent()) {
                         float f = player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye").get();
                         if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player) instanceof LivingEntity) {
-                            if (f < 5) {
+
+                            float s = 5;
+                            if (Handler.hascurio(player,Items.abnormal_eye.get())){
+                                s*=0.2f;
+                            }
+                            if (f < s) {
                                 player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", f + 0.1f);
                             }
                         } else {
@@ -107,4 +111,5 @@ public abstract class GameRendererMixin {
         }
         return pointedEntity;
     }
+
 }

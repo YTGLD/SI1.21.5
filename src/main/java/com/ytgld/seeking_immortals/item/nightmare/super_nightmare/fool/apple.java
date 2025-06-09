@@ -54,7 +54,7 @@ public class apple extends nightmare implements SuperNightmare {
 
     public Multimap<Holder<Attribute>, AttributeModifier> gets() {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.85f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.5f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         return linkedHashMultimap;
     }
     @Override

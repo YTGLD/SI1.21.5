@@ -35,10 +35,7 @@ public class erosion_soul extends ThrowableItemProjectile {
     public LivingEntity living;
     @Override
     protected void checkSupportingBlock(boolean onGround, @Nullable Vec3 movement) {
-
     }
-
-
     private final List<Vec3> trailPositions = new ArrayList<>();
 
     @Override
@@ -54,7 +51,7 @@ public class erosion_soul extends ThrowableItemProjectile {
         if (canSee) {
             if (living != null) {
                 if (this.tickCount > 6) {
-                    Vec3 targetPos = living.position().add(0, 0, 0); // 将 Y 坐标增加 heightOffset
+                    Vec3 targetPos = living.position().add(0, 1, 0); // 将 Y 坐标增加 heightOffset
 
                     Vec3 currentPos = this.position();
                     Vec3 direction = targetPos.subtract(currentPos).normalize();
@@ -63,8 +60,8 @@ public class erosion_soul extends ThrowableItemProjectile {
 
                     double angle = Math.acos(currentDirection.dot(direction)) * (180.0 / Math.PI);
 
-                    if (angle > 15) {
-                        double angleLimit = Math.toRadians(15); // 将5度转为弧度
+                    if (angle > 7.5) {
+                        double angleLimit = Math.toRadians(7.5); // 将5度转为弧度
 
                         Vec3 limitedDirection = currentDirection.scale(Math.cos(angleLimit)) // 计算缩放因子
                                 .add(direction.normalize().scale(Math.sin(angleLimit))); // 根据目标方向进行调整
@@ -98,25 +95,22 @@ public class erosion_soul extends ThrowableItemProjectile {
                                     playerPos.z + range));
             for (LivingEntity living : entities) {
                 if (this.getOwner() != null && !living.is(this.getOwner())&&this.getOwner() instanceof Player player) {
-                    if (this.tickCount > 30) {
-                        living.invulnerableTime = 0;
+                    living.invulnerableTime = 0;
 
-                        living.hurt(living.damageSources().magic(), (float) (player.getAttributeValue(Attributes.MAX_HEALTH)+player.getAttributeValue(Attributes.ATTACK_DAMAGE)*0.2F));
-
+                    living.hurt(living.damageSources().magic(), (float) (player.getAttributeValue(Attributes.MAX_HEALTH) + player.getAttributeValue(Attributes.ATTACK_DAMAGE) * 0.2F));
 
 
-                        living.addEffect(new MobEffectInstance(Effects.erosion, 600, 1));
-                        MobEffectInstance effect = living.getEffect(Effects.dead);
-                        if (effect!=null){
-                            if (effect.getAmplifier()<5) {
-                                living.addEffect(new MobEffectInstance(Effects.dead, 600, effect.getAmplifier() + 1));
-                            }else {
-                                living.addEffect(new MobEffectInstance(Effects.dead, 600, 5));
-                            }
+                    living.addEffect(new MobEffectInstance(Effects.erosion, 600, 1));
+                    MobEffectInstance effect = living.getEffect(Effects.dead);
+                    if (effect != null) {
+                        if (effect.getAmplifier() < 5) {
+                            living.addEffect(new MobEffectInstance(Effects.dead, 600, effect.getAmplifier() + 1));
+                        } else {
+                            living.addEffect(new MobEffectInstance(Effects.dead, 600, 5));
                         }
-                        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.SLIME_BLOCK_BREAK, SoundSource.AMBIENT, 1, 1);
-                        canSee = false;
                     }
+
+                    canSee = false;
                 }
             }
             super.tick();

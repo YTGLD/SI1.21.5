@@ -56,7 +56,7 @@
   "seeking_immortals.jei.item.seeking_immortals.candle": "合成获取",
 
   "item.seeking_immortals.apple": "§4倾斜异果",
-  "item.apple.tool.string": "最大生命值减少85%",
+  "item.apple.tool.string": "最大生命值减少50%",
   "item.apple.tool.string.1": "受到的伤害固定为2",
   "item.apple.tool.string.2": "攻击伤害固定为10",
 
@@ -419,7 +419,8 @@
 
   "item.seeking_immortals.the_erosion":"§4邪术法球",
   "item.the_erosion.tool.string": "受伤后根据单次伤害释放一定数量的黑气，黑气击中造成大量伤害并减速目标",
-  "item.the_erosion.tool.string.1": "增加20%受到伤害和生命值",
+  "item.the_erosion.tool.string.1": " +20%生命值",
+  "item.the_erosion.tool.string.3": " +20%受到伤害",
 
   "advancements.tooltip.the_erosion.text": "获得它",
   "advancements.tooltip.the_erosion.hand": "黑暗法术!",

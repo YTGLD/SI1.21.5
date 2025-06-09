@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.LevelTargetBundle;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.entity.player.Player;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -103,7 +104,13 @@ public abstract class Distorted implements MDistorted {
         PostChain postchain1 = this.minecraft.getShaderManager().getPostChain(SeekingImmortalsMod.Distorted, Set.of(DistortedDefaultFramebufferSets.MAIN, DistortedDefaultFramebufferSets.ENTITY_OUTLINE));
 
         if (postchain1 != null) {
-            postchain1.addToFrame(frameGraphBuilder, i, j, this._1_21_5$defaultFramebufferSets,null);
+            postchain1.addToFrame(frameGraphBuilder, i, j, this._1_21_5$defaultFramebufferSets, (renderPass -> {
+                float r = 0f;
+                float g = 0f;
+                float b = 0f;
+                float a = 33f;
+                renderPass.setUniform("ColorModulate",r,g,b,a);
+            }));
         }
 
     }

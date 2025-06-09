@@ -282,7 +282,7 @@
 
 
  "item.seeking_immortals.apple": "§4Skewed Fruit",
- "item.apple.tool.string": "Max Health - 85%",
+ "item.apple.tool.string": "Max Health - 50%",
  "item.apple.tool.string.1": "Damage taken is fixed at 2",
  "item.apple.tool.string.2": "Attack damage is fixed at 10",
 
@@ -313,7 +313,8 @@
  "item.immortal.tool.string.6": "It is rumored that a person who wields the power of the cycle of life and death...",
  "item.immortal.tool.string.7": "Простовання простовання...",
  "item.immortal.tool.string.8": "But... At what cost? ",
- "effect.seeking_immortals.dead": "枯朽",
+  "effect.seeking_immortals.dead": "枯朽",
+  "effect.seeking_immortals.erosion": "侵蚀",
 
  "advancements.tooltip.immortal.text": "“I've long been tired of reincarnation again and again”",
  "advancements.tooltip.immortal.hand": "Step into reincarnation",
@@ -412,14 +413,14 @@
 
 "item.seeking_immortals.the_erosion":"§4 Hexelous Orb",
   "item.the_erosion.tool.string": "After taking damage, a certain amount of black gas is released according to a single damage, and the black gas hits the target, dealing a large amount of damage and slowing the target",
-  "item.the_erosion.tool.string.1": "20% increased damage and health",
+  "item.the_erosion.tool.string.1": "20% health",
+  "item.the_erosion.tool.string.2": "你的攻击也能触发黑气的产生",
+  "item.the_erosion.tool.string.3": " +20%受到伤害",
 
 "advancements.tooltip.the_erosion.text": "Get it",
   "advancements.tooltip.the_erosion.hand": "Dark Spell!",
 
 "seeking_immortals.jei.item.seeking_immortals.the_erosion": "",
-
-
 
 
   "item.seeking_immortals.eye":"§4Evil Eyes",
@@ -433,6 +434,16 @@
   "item.eye.tool.string.8": "灵魂会飞向你，若撞击到生物则造成大量负面效果和4点魔法伤害",
 
   "advancements.tooltip.eye.text": "Obtain this item",
-  "advancements.tooltip.eye.hand": "Lonely and evil eyes"
+  "advancements.tooltip.eye.hand": "Lonely and evil eyes",
+
+  "item.abnormal.tool.string": "强制解锁下列罪孽",
+
+  "item.seeking_immortals.abnormal_eye": "§4窥探之印",
+  "item.abnormal_eye.tool.string": "降低80%邪念之窥眸的近视效果",
+
+  "item.seeking_immortals.a_thousand_evil_eyeballs": "§4千邪眼球",
+  "item.a_thousand_evil_eyeballs.tool.string": "你将沦陷在迷雾当中...",
+  "item.a_thousand_evil_eyeballs.tool.string.1": "这件物体使你感到了毛骨悚然",
+  "item.seeking_immortals.give.a_thousand_evil_eyeballs": "杀死凋零后将强制解锁并佩戴"
 }
 

@@ -93,8 +93,9 @@ public class eye extends nightmare {
                     }
                     entity.invulnerableTime = 0;
 
-
-                    entity.hurt(entity.damageSources().magic(), slotContext.entity().getMaxHealth() / 20f + 3);
+                    if (slotContext.entity() instanceof Player player) {
+                        entity.hurt(entity.damageSources().playerAttack(player), slotContext.entity().getMaxHealth() / 20f + 3);
+                    }
                     entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PHANTOM_BITE, SoundSource.AMBIENT, 1, 1);
 
                     CompoundTag compoundTag = stack.get(DataReg.tag);

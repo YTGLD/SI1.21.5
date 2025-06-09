@@ -12,6 +12,8 @@ import com.ytgld.seeking_immortals.test_entity.erosion_soul;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -29,13 +32,25 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Consumer;
 
+/**
+ *  受伤后根据单次伤害释放一定数量的黑气，黑气击中造成大量伤害并减速目标
+ * <p>
+ * 增加20%受到伤害和生命值
+ * <p>
+ * <p>
+ * 你的弹射物也能触发黑气的产生
+ *
+ */
+
 public class the_erosion extends nightmare implements SuperNightmare {
     public the_erosion(Properties properties) {
         super(properties);
     }
 
-    public static void hur(LivingIncomingDamageEvent event){
+    public static void hur(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof LivingEntity living) {
+
+
             if (event.getEntity() instanceof Player player) {
                 if (!player.getCooldowns().isOnCooldown(Items.the_erosion.get().getDefaultInstance())) {
                     if (Handler.hascurio(player, Items.the_erosion.get())) {
@@ -54,8 +69,25 @@ public class the_erosion extends nightmare implements SuperNightmare {
 
                             player.level().addFreshEntity(erosion_soul);
 
-                            player.getCooldowns().addCooldown(Items.the_erosion.get().getDefaultInstance(),size * 10);
+                            player.getCooldowns().addCooldown(Items.the_erosion.get().getDefaultInstance(), size * 10);
                         }
+                    }
+                }
+            }
+        }
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (!player.getCooldowns().isOnCooldown(Items.the_erosion.get().getDefaultInstance())) {
+                if (Handler.hascurio(player, Items.the_erosion.get())) {
+                    for (int i = 0; i < 3; i++) {
+                        erosion_soul erosion_soul = new erosion_soul(Entitys.erosion_soul.get(), player.level());
+                        erosion_soul.setOwner(player);
+                        erosion_soul.living = event.getEntity();
+                        erosion_soul.setPos(player.position());
+                        erosion_soul.setDeltaMovement(new Vec3(Mth.nextFloat(RandomSource.create(), -0.21F, 0.25F), 0.25f, Mth.nextFloat(RandomSource.create(), -0.311F, 0.25F)));
+
+                        player.level().addFreshEntity(erosion_soul);
+
+                        player.getCooldowns().addCooldown(Items.the_erosion.get().getDefaultInstance(), 3 * 10);
                     }
                 }
             }
@@ -83,8 +115,11 @@ public class the_erosion extends nightmare implements SuperNightmare {
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltipDisplay, tooltip,flag);
         tooltip.accept(Component.literal(""));
-        tooltip.accept(Component.translatable("item.the_erosion.tool.string").withStyle(ChatFormatting.RED));
-        tooltip.accept(Component.translatable("item.the_erosion.tool.string.1").withStyle(ChatFormatting.RED));
+        tooltip.accept(Component.translatable("item.the_erosion.tool.string").withStyle(ChatFormatting.DARK_RED));
         tooltip.accept(Component.literal(""));
+        tooltip.accept(Component.translatable("item.the_erosion.tool.string.2").withStyle(ChatFormatting.DARK_RED));
+        tooltip.accept(Component.literal(""));
+        tooltip.accept(Component.translatable("item.the_erosion.tool.string.1").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
+        tooltip.accept(Component.translatable("item.the_erosion.tool.string.3").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFff4789))));
     }
 }

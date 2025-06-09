@@ -1,0 +1,167 @@
+{
+    "targets": {
+        "swap": {}
+    },
+    "passes": [
+        {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "seeking_immortals:blur_si",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        },
+        {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "seeking_immortals:blur_si",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        }, {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "seeking_immortals:blur_si",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        },
+        {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "seeking_immortals:blur_si",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        }, {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "seeking_immortals:blur_si",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        },
+        {
+            "vertex_shader": "seeking_immortals:post/blit_screen",
+            "fragment_shader": "seeking_immortals:post/lightmap",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "seeking_immortals:blur_si",
+            "uniforms": [
+                {"name": "AmbientLightFactor", "type": "float"},
+                {"name": "SkyFactor", "type": "float"},
+                {"name": "BlockFactor", "type": "float"},
+                {"name": "UseBrightLightmap", "type": "int"},
+                {"name": "SkyLightColor", "type": "vec3"},
+                {"name": "NightVisionFactor", "type": "float"},
+                {"name": "DarknessScale", "type": "float"},
+                {"name": "DarkenWorldFactor", "type": "float"},
+                {"name": "BrightnessFactor", "type": "float"},
+                {"name": "fragPos", "type": "vec3"},
+                {"name": "positionL", "type": "vec3"},
+                {"name": "radiusL", "type": "float"},
+                {"name": "colorL", "type": "vec3"}
+            ]
+        }
+    ]
+}

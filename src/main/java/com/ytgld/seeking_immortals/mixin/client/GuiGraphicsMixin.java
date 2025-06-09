@@ -15,11 +15,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.ClientHooks;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import org.joml.Matrix4f;
 import org.joml.Vector2ic;
+import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -80,7 +83,7 @@ public abstract class GuiGraphicsMixin {
                 int k2;
                 ClientTooltipComponent clienttooltipcomponent2;
                 for (k2 = 0; k2 < tooltipLines.size(); ++k2) {
-                    clienttooltipcomponent2 = (ClientTooltipComponent) tooltipLines.get(k2);
+                    clienttooltipcomponent2 = tooltipLines.get(k2);
                     clienttooltipcomponent2.renderText(preEvent.getFont(), l, k1, this.pose.last().pose(), this.bufferSource);
                     k1 += clienttooltipcomponent2.getHeight(preEvent.getFont()) + (k2 == 0 ? 2 : 0);
                 }
@@ -88,7 +91,7 @@ public abstract class GuiGraphicsMixin {
                 k1 = i1;
 
                 for (k2 = 0; k2 < tooltipLines.size(); ++k2) {
-                    clienttooltipcomponent2 = (ClientTooltipComponent) tooltipLines.get(k2);
+                    clienttooltipcomponent2 = tooltipLines.get(k2);
                     clienttooltipcomponent2.renderImage(preEvent.getFont(), l, k1, i2, j2, (GuiGraphics) (Object) this);
                     k1 += clienttooltipcomponent2.getHeight(preEvent.getFont()) + (k2 == 0 ? 2 : 0);
                 }
@@ -99,6 +102,7 @@ public abstract class GuiGraphicsMixin {
                     moonstone$renderTooltipBackground_nig((GuiGraphics) (Object) this, l, i1, i2, j2, 400, 0xff000000, 0xff000000, 0xff000000, 0xff000000);
                     this.pose.popPose();
                 }
+
                 this.pose.pushPose();
                 si1_21_4$renderTooltipBackground((GuiGraphics) (Object) this, l, i1, i, j, 400);
                 this.pose.translate(0.0F, 0.0F, 400.0F);

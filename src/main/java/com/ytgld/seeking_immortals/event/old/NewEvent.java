@@ -6,6 +6,7 @@ import com.ytgld.seeking_immortals.event.CurioDamageEvent;
 import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.init.Effects;
 import com.ytgld.seeking_immortals.init.Items;
+import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.abnormal_eye;
 import com.ytgld.seeking_immortals.item.nightmare.immortal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.INightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
@@ -41,6 +42,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
+import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
@@ -48,6 +50,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import oshi.driver.mac.net.NetStat;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
@@ -96,7 +99,7 @@ public class NewEvent {
         wolf.kill(event);
         nightmare_base_black_eye_red.kill(event);
         nightmare_base_insight_insane.LivingDeathEvents(event);
-
+        abnormal_eye.dieEqItem(event);
     }
 
     @SubscribeEvent
@@ -237,11 +240,17 @@ public class NewEvent {
         }
     }
 
+
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
-    public void Color(RenderTooltipEvent.Texture tooltipEvent){
-        ItemStack stack = tooltipEvent.getItemStack();
-        if (stack.getItem() instanceof INightmare) {
+    public void Color(ViewportEvent.RenderFog event){
+        if (event.getCamera().getEntity() instanceof Player player) {
+            if (Handler.hascurio(player, Items.a_thousand_evil_eyeballs.get())) {
+                event.setCanceled(true);
+
+                event.setFarPlaneDistance(event.getFarPlaneDistance()*0.33f);
+                event.setNearPlaneDistance(event.getNearPlaneDistance()*0.33f);
+            }
         }
     }
 }

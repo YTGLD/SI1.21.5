@@ -29,7 +29,7 @@
         {
           "name": "BlurDir",
           "type": "vec2",
-          "values": [ 2.8, 0.0 ]
+          "values": [ 3.0, 0.0 ]
         }
       ]
     },
@@ -50,15 +50,15 @@
         {
           "name": "BlurDir",
           "type": "vec2",
-          "values": [ 0.0, 2.8 ]
+          "values": [ 0.0, 3.0 ]
         }
       ]
     },
 
 
     {
-      "vertex_shader": "seeking_immortals:post/blit",
-      "fragment_shader": "seeking_immortals:post/blit",
+      "vertex_shader": "seeking_immortals:post/blit_distorted",
+      "fragment_shader": "seeking_immortals:post/blit_distorted",
       "inputs": [
         {
           "sampler_name": "In",
@@ -68,8 +68,7 @@
       "uniforms": [
         {
           "name": "ColorModulate",
-          "type": "vec4",
-          "values": [ 0.0, 0.0, 0.0, 33 ]
+          "type": "vec4"
         }
       ],
       "output": "seeking_immortals:distorted"

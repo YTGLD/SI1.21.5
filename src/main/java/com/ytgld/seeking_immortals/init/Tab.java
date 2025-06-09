@@ -73,6 +73,10 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base_start_power.get()));
                 b.accept(new ItemStack(Items.wolf.get()));
 
+
+                b.accept(new ItemStack(Items.abnormal_eye.get()));
+                b.accept(new ItemStack(Items.a_thousand_evil_eyeballs.get()));
+
             })
             .build());
 }
