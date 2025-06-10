@@ -38,6 +38,8 @@ public class SeekingImmortalsMod
 
     public static final ResourceLocation Distorted = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
             "distorted");
+    public static final ResourceLocation light = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
+            "light");
 
     public SeekingImmortalsMod(IEventBus eventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(new NewEvent());
