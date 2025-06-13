@@ -7,13 +7,13 @@ import net.minecraft.client.renderer.PostChain;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-public class LightFramebufferSets
-        implements PostChain.TargetBundle  {
+public class LightFramebufferSets  implements PostChain.TargetBundle  {
 
-    public  ResourceHandle<RenderTarget> entityOutlineFramebuffer;
+    public ResourceHandle<RenderTarget> entityOutlineFramebuffer;
     public  ResourceHandle<RenderTarget> mainFramebuffer = ResourceHandle.invalid();
     public static final ResourceLocation MAIN =ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"main");
-    public static final ResourceLocation ENTITY_OUTLINE = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"light");
+    public static final ResourceLocation ENTITY_OUTLINE = ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
+            "light");
     @Override
     public ResourceHandle<RenderTarget> getOrThrow(ResourceLocation id) {
         if (id .equals(ENTITY_OUTLINE) ) {
@@ -48,3 +48,4 @@ public class LightFramebufferSets
     }
 
 }
+

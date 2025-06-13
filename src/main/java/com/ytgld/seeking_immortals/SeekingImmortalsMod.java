@@ -28,6 +28,8 @@ import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
+import java.util.Locale;
+
 @Mod(SeekingImmortalsMod.MODID)
 public class SeekingImmortalsMod
 {
@@ -83,6 +85,7 @@ public class SeekingImmortalsMod
         public static void RegisterRenderPipelinesEvent(RegisterRenderPipelinesEvent event) {
             event.registerPipeline(MRender.RenderPs.endBloodRenderPipeline);
             event.registerPipeline(MRender.RenderPs.LIGHTNINGBloodRenderPipeline);
+
         }
     }
 }

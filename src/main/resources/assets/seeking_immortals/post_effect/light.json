@@ -4,39 +4,8 @@
   },
   "passes": [
     {
-      "vertex_shader": "seeking_immortals:post/world_vsh",
-      "fragment_shader": "seeking_immortals:post/world",
-      "inputs": [
-        {
-          "sampler_name": "In",
-          "target": "seeking_immortals:light"
-        }
-      ],
-      "output": "swap"
-    },
-    {
-      "vertex_shader": "seeking_immortals:post/world_vsh",
-      "fragment_shader": "seeking_immortals:post/world",
-      "inputs": [
-        {
-          "sampler_name": "In",
-          "target": "swap",
-          "bilinear": true
-        }
-      ],
-      "output": "seeking_immortals:light",
-      "uniforms": [
-        {"name": "positionLight", "type": "vec3"},
-        {"name": "color_light", "type": "vec3"},
-        {"name": "radius_light", "type": "float"},
-        {"name": "u_lightSourcesAmount", "type": "int"}
-      ]
-    },
-
-
-    {
-      "vertex_shader": "seeking_immortals:post/world_vsh",
-      "fragment_shader": "seeking_immortals:post/world",
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
       "inputs": [
         {
           "sampler_name": "In",
@@ -46,30 +15,129 @@
       ],
       "output": "swap",
       "uniforms": [
-        {"name": "positionLight", "type": "vec3"},
-        {"name": "color_light", "type": "vec3"},
-        {"name": "radius_light", "type": "float"},
-        {"name": "u_lightSourcesAmount", "type": "int"}
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 1.0, 0.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
       ]
     },
-
-
     {
-      "vertex_shader": "seeking_immortals:post/world_vsh",
-      "fragment_shader": "seeking_immortals:post/world",
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
       "inputs": [
         {
           "sampler_name": "In",
-          "target": "swap"
+          "target": "swap",
+          "bilinear": true
         }
       ],
+      "output": "seeking_immortals:light",
       "uniforms": [
-        {"name": "positionLight", "type": "vec3"},
-        {"name": "color_light", "type": "vec3"},
-        {"name": "radius_light", "type": "float"},
-        {"name": "u_lightSourcesAmount", "type": "int"}
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 0.0, 1.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
+      ]
+    }, {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "seeking_immortals:light",
+          "bilinear": true
+        }
       ],
-      "output": "seeking_immortals:light"
+      "output": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 1.0, 0.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": true
+        }
+      ],
+      "output": "seeking_immortals:light",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 0.0, 1.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
+      ]
+    }, {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "seeking_immortals:light",
+          "bilinear": true
+        }
+      ],
+      "output": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 1.0, 0.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "vertex_shader": "seeking_immortals:post/blur",
+      "fragment_shader": "seeking_immortals:post/box_blur",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap",
+          "bilinear": true
+        }
+      ],
+      "output": "seeking_immortals:light",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "type": "vec2",
+          "values": [ 0.0, 1.0 ]
+        },
+        {
+          "name": "Radius",
+          "type": "float"
+        }
+      ]
     }
   ]
 }
