@@ -1,4 +1,4 @@
-package com.ytgld.seeking_immortals.item.nightmare.super_nightmare;
+package com.ytgld.seeking_immortals.item.nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -6,7 +6,6 @@ import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.init.Entitys;
 import com.ytgld.seeking_immortals.init.Items;
-import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
 import com.ytgld.seeking_immortals.test_entity.erosion_soul;
 import net.minecraft.ChatFormatting;
@@ -22,7 +21,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -37,12 +35,10 @@ import java.util.function.Consumer;
  * <p>
  * 增加20%受到伤害和生命值
  * <p>
- * <p>
- * 你的弹射物也能触发黑气的产生
  *
  */
 
-public class the_erosion extends nightmare implements SuperNightmare {
+public class the_erosion extends nightmare  {
     public the_erosion(Properties properties) {
         super(properties);
     }

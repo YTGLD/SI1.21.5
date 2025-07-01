@@ -2,18 +2,31 @@ package com.ytgld.seeking_immortals.test_entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.ytgld.seeking_immortals.SeekingImmortalsMod;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.renderer.MRender;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
 import com.ytgld.seeking_immortals.test_entity.state.OrbEntityRenderState;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.client.renderer.entity.EntityRenderer<T, OrbEntityRenderState> {
     public OrbEntityRenderer(EntityRendererProvider.Context context) {
@@ -23,6 +36,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
     @Override
     public void render(OrbEntityRenderState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
 
+
         float partialTick = renderState.partialTick;
 
         double x = Mth.lerp(partialTick, renderState.entity.xOld, renderState.entity.getX());
@@ -31,20 +45,118 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         poseStack.pushPose();
         poseStack.translate(renderState.entity.getX()-x, renderState.entity.getY()-y,renderState.entity.getZ() -z);
 
-        if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
-            if (renderState.entity.canSee)
-                renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBloodOutline), 240, 0.15f);
-            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
+        float f = 1.5f;
+        double d2 = renderState.distanceToCameraSq;
+        float f1 = (float)((1.0 - d2 / 256.0) * 1);
+        if (f1 > 0.0F) {
+            renderShadow(poseStack, bufferSource, renderState, f1, renderState.entity.level(), f);
         }
 
-        setT(poseStack,renderState.entity,bufferSource.getBuffer(MRender.endBlood));
-        if (renderState.entity.canSee)
-            renderSphere1(poseStack,bufferSource.getBuffer(MRender.endBlood),240,0.15f);
+        if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
+            if (renderState.entity.canSee) {
+                renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBloodOutline), 240, 0.15f);
+            }
+            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.lightning_color_outline));
+        }else {
+
+            setT(poseStack, renderState.entity, bufferSource.getBuffer(MRender.endBlood));
+        }
+        if (renderState.entity.canSee) {
+            renderSphere1(poseStack, bufferSource.getBuffer(MRender.endBlood), 240, 0.15f);
+        }
 
         poseStack.popPose();
 
     }
+    private static void renderShadow(
+            PoseStack poseStack, MultiBufferSource bufferSource, OrbEntityRenderState renderState, float strength, LevelReader level, float baseSize
+    ) {
+        float yDistanceFromGround = (float) (renderState.entity.getY() - Mth.floor(renderState.entity.getY())); // 计算实体与地面的高度差
+        float size = baseSize + (1 - yDistanceFromGround) * baseSize; // 靠近地面时半径变大
+        float f = Math.min(strength / 0.5F, size);
+        int i = Mth.floor(renderState.entity.getX() - size);
+        int j = Mth.floor(renderState.entity.getX() + size);
+        int k = Mth.floor(renderState.entity.getY() - f * 2);
+        int l = Mth.floor(renderState.entity.getY());
+        int i1 = Mth.floor(renderState.entity.getZ() - size);
+        int j1 = Mth.floor(renderState.entity.getZ() + size);
+        PoseStack.Pose posestack$pose = poseStack.last();
+        VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.entityShadow(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,"textures/gui/shadow.png")));
+        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
+        for (int k1 = i1; k1 <= j1; k1++) {
+            for (int l1 = i; l1 <= j; l1++) {
+                blockpos$mutableblockpos.set(l1, 0, k1);
+                ChunkAccess chunkaccess = level.getChunk(blockpos$mutableblockpos);
+
+                for (int i2 = k; i2 <= l; i2++) {
+                    blockpos$mutableblockpos.setY(i2);
+                    float f1 = strength - (float)(renderState.entity.getY() - blockpos$mutableblockpos.getY()) * 0.1F;
+                    renderBlockShadow(renderState,
+                            posestack$pose, vertexconsumer, chunkaccess, level, blockpos$mutableblockpos, renderState.entity.getX(), renderState.entity.getY(), renderState.entity.getZ(), size, f1
+                    );
+                }
+            }
+        }
+    }
+
+    private static void renderBlockShadow(
+            OrbEntityRenderState renderState,
+            PoseStack.Pose pose,
+            VertexConsumer consumer,
+            ChunkAccess chunk,
+            LevelReader level,
+            BlockPos pos,
+            double x,
+            double y,
+            double z,
+            float size,
+            float weight
+    ) {
+        BlockPos blockpos = pos.below();
+        BlockState blockstate = chunk.getBlockState(blockpos);
+        if (blockstate.getRenderShape() != RenderShape.INVISIBLE && level.getMaxLocalRawBrightness(pos) > 3) {
+            if (blockstate.isCollisionShapeFullBlock(chunk, blockpos)) {
+                VoxelShape voxelshape = blockstate.getShape(chunk, blockpos);
+                if (!voxelshape.isEmpty()) {
+                    float f1 = weight * 0.5F;
+                    if (f1 >= 0.0F) {
+
+                        float yDistanceFromGround = (float) (renderState.entity.getY() - Mth.floor(renderState.entity.getY())); // 计算实体与地面的高度差
+                        float alpha = 255.0F * (1.0F - yDistanceFromGround); // 根据高度差计算alpha值
+                        int i = ARGB.color(Mth.floor(alpha), 255, 0, 255); // 使用计算得到的alpha值
+
+                        AABB aabb = voxelshape.bounds();
+                        double d0 = pos.getX() + aabb.minX;
+                        double d1 = pos.getX() + aabb.maxX;
+                        double d2 = pos.getY() + aabb.minY;
+                        double d3 = pos.getZ() + aabb.minZ;
+                        double d4 = pos.getZ() + aabb.maxZ;
+                        float f2 = (float)(d0 - x);
+                        float f3 = (float)(d1 - x);
+                        float f4 = (float)(d2 - y);
+                        float f5 = (float)(d3 - z);
+                        float f6 = (float)(d4 - z);
+                        float f7 = -f2 / 2.0F / size + 0.5F;
+                        float f8 = -f3 / 2.0F / size + 0.5F;
+                        float f9 = -f5 / 2.0F / size + 0.5F;
+                        float f10 = -f6 / 2.0F / size + 0.5F;
+                        shadowVertex(pose, consumer, i, f2, f4, f5, f7, f9);
+                        shadowVertex(pose, consumer, i, f2, f4, f6, f7, f10);
+                        shadowVertex(pose, consumer, i, f3, f4, f6, f8, f10);
+                        shadowVertex(pose, consumer, i, f3, f4, f5, f8, f9);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void shadowVertex(
+            PoseStack.Pose pose, VertexConsumer consumer, int color, float offsetX, float offsetY, float offsetZ, float u, float v
+    ) {
+        Vector3f vector3f = pose.pose().transformPosition(offsetX, offsetY, offsetZ, new Vector3f());
+        consumer.addVertex(vector3f.x(), vector3f.y(), vector3f.z(), color, u, v, OverlayTexture.NO_OVERLAY, 0Xff, 0.0F, 1.0F, 0.0F);
+    }
     private  static void setT(PoseStack matrices,
                               orb_entity entity,
                               VertexConsumer vertexConsumers)

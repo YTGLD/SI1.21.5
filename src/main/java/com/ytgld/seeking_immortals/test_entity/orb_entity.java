@@ -40,6 +40,7 @@ public class orb_entity extends ThrowableItemProjectile {
 
     @Override
     public void tick() {
+        this.setNoGravity(true);
         if (canSee) {
             trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
         }

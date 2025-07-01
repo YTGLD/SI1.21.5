@@ -31,7 +31,7 @@ import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.*;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_pod;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.start.nightmare_base_start_power;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.*;
-import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.the_erosion;
+import com.ytgld.seeking_immortals.item.nightmare.the_erosion;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
