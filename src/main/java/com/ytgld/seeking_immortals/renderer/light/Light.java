@@ -78,7 +78,7 @@ public class Light {
                     int color = ARGB.color(Mth.floor(alpha), 255, 0, 255);
 
                     AABB aabb = voxelshape.bounds();
-                    double d0, d1, d2, d3, d4;
+                    double d0, d1, d2, d3, d4,d5;
                     Vector3f normal = new Vector3f(face.getStepX(),face.getStepY(),face.getStepZ());
                     switch (face) {
                         case DOWN:
@@ -106,45 +106,48 @@ public class Light {
                         case EAST:
                             d0 = pos.getX() + aabb.maxX;
                             d2 = pos.getY() + aabb.minY;
-                            d3 = pos.getZ() + aabb.minZ;
-                            d4 = pos.getZ() + aabb.maxZ;
-                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d3 - z, size), v(d2 - y, size), normal);
+                            d3 = pos.getY() + aabb.maxY;
+                            d4 = pos.getZ() + aabb.minZ;
+                            d5 = pos.getZ() + aabb.maxZ;
                             shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d4 - z, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d5 - z, u(d5 - z, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d5 - z, u(d5 - z, size), v(d3 - y, size), normal);
                             shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d4 - z, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d3 - z, size), v(d3 - y, size), normal);
                             break;
                         case WEST:
                             d0 = pos.getX() + aabb.minX;
                             d2 = pos.getY() + aabb.minY;
-                            d3 = pos.getZ() + aabb.minZ;
-                            d4 = pos.getZ() + aabb.maxZ;
-                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d3 - z, size), v(d2 - y, size), normal);
+                            d3 = pos.getY() + aabb.maxY;
+                            d4 = pos.getZ() + aabb.minZ;
+                            d5 = pos.getZ() + aabb.maxZ;
                             shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d4 - z, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d5 - z, u(d5 - z, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d5 - z, u(d5 - z, size), v(d3 - y, size), normal);
                             shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d4 - z, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d3 - z, size), v(d3 - y, size), normal);
                             break;
                         case NORTH:
                             d0 = pos.getX() + aabb.minX;
                             d1 = pos.getX() + aabb.maxX;
                             d2 = pos.getY() + aabb.minY;
-                            d3 = pos.getZ() + aabb.minZ;
-                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d2 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d0 - x, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d1 - x, d3 - y, d3 - z, u(d1 - x, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d2 - y, size), normal);
+                            d3 = pos.getY() + aabb.maxY;
+                            d4 = pos.getZ() + aabb.minZ;
+                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d0 - x, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d0 - x, size), v(d3 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d1 - x, d3 - y, d4 - z, u(d1 - x, size), v(d3 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d1 - x, d2 - y, d4 - z, u(d1 - x, size), v(d2 - y, size), normal);
                             break;
                         case SOUTH:
                             d0 = pos.getX() + aabb.minX;
                             d1 = pos.getX() + aabb.maxX;
                             d2 = pos.getY() + aabb.minY;
-                            d3 = pos.getZ() + aabb.maxZ;
-                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d2 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d0 - x, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d1 - x, d3 - y, d3 - z, u(d1 - x, size), v(d3 - y, size), normal);
-                            shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d2 - y, size), normal);
+                            d3 = pos.getY() + aabb.maxY;
+                            d4 = pos.getZ() + aabb.maxZ;
+                            shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d0 - x, size), v(d2 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d0 - x, size), v(d3 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d1 - x, d3 - y, d4 - z, u(d1 - x, size), v(d3 - y, size), normal);
+                            shadowVertex(pose, consumer, color, d1 - x, d2 - y, d4 - z, u(d1 - x, size), v(d2 - y, size), normal);
                             break;
                     }
-
                 }
             }
         }
