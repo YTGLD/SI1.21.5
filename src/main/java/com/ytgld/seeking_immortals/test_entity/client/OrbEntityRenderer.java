@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.renderer.MRender;
+import com.ytgld.seeking_immortals.renderer.light.Light;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
 import com.ytgld.seeking_immortals.test_entity.state.OrbEntityRenderState;
 import net.minecraft.client.renderer.LightTexture;
@@ -15,6 +16,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
@@ -49,7 +51,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
         double d2 = renderState.distanceToCameraSq;
         float f1 = (float)((1.0 - d2 / 256.0) * 1);
         if (f1 > 0.0F) {
-            renderShadow(poseStack, bufferSource, renderState, f1, renderState.entity.level(), f);
+            Light. renderShadow(poseStack, bufferSource, renderState, f1, renderState.entity.level(), f);
         }
 
         if (ClientConfig.CLIENT_CONFIG.itemDurabilityMultiplier.get()) {
@@ -86,15 +88,16 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
 
         for (int k1 = i1; k1 <= j1; k1++) {
             for (int l1 = i; l1 <= j; l1++) {
-                blockpos$mutableblockpos.set(l1, 0, k1);
-                ChunkAccess chunkaccess = level.getChunk(blockpos$mutableblockpos);
+                for (int m1 = k; m1 <= l; m1++) {
+                    blockpos$mutableblockpos.set(l1, m1, k1);
+                    ChunkAccess chunkaccess = level.getChunk(blockpos$mutableblockpos);
 
-                for (int i2 = k; i2 <= l; i2++) {
-                    blockpos$mutableblockpos.setY(i2);
-                    float f1 = strength - (float)(renderState.entity.getY() - blockpos$mutableblockpos.getY()) * 0.1F;
-                    renderBlockShadow(renderState,
-                            posestack$pose, vertexconsumer, chunkaccess, level, blockpos$mutableblockpos, renderState.entity.getX(), renderState.entity.getY(), renderState.entity.getZ(), size, f1
-                    );
+                    // 渲染每个方向的阴影
+                    for (Direction face : Direction.values()) {
+                        renderBlockShadow(renderState,
+                                posestack$pose, vertexconsumer, chunkaccess, level, blockpos$mutableblockpos, renderState.entity.getX(), renderState.entity.getY(), renderState.entity.getZ(), size, f, face
+                        );
+                    }
                 }
             }
         }
@@ -111,7 +114,9 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
             double y,
             double z,
             float size,
-            float weight
+            float weight,
+            Direction face
+
     ) {
         BlockPos blockpos = pos.below();
         BlockState blockstate = chunk.getBlockState(blockpos);
@@ -124,7 +129,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
 
                         float yDistanceFromGround = (float) (renderState.entity.getY() - Mth.floor(renderState.entity.getY())); // 计算实体与地面的高度差
                         float alpha = 255.0F * (1.0F - yDistanceFromGround); // 根据高度差计算alpha值
-                        int i = ARGB.color(Mth.floor(alpha), 255, 0, 255); // 使用计算得到的alpha值
+                        int color = Light.ARGB.color(Mth.floor(alpha), 255, 0, 255); // 使用计算得到的alpha值
 
                         AABB aabb = voxelshape.bounds();
                         double d0 = pos.getX() + aabb.minX;
@@ -141,22 +146,118 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
                         float f8 = -f3 / 2.0F / size + 0.5F;
                         float f9 = -f5 / 2.0F / size + 0.5F;
                         float f10 = -f6 / 2.0F / size + 0.5F;
-                        shadowVertex(pose, consumer, i, f2, f4, f5, f7, f9);
-                        shadowVertex(pose, consumer, i, f2, f4, f6, f7, f10);
-                        shadowVertex(pose, consumer, i, f3, f4, f6, f8, f10);
-                        shadowVertex(pose, consumer, i, f3, f4, f5, f8, f9);
+                        Vector3f normal = new Vector3f(face.getStepX(),face.getStepY(),face.getStepZ());
+                        switch (face) {
+                            case DOWN:
+                                d0 = pos.getX() + aabb.minX;
+                                d1 = pos.getX() + aabb.maxX;
+                                d2 = pos.getY() + aabb.minY;
+                                d3 = pos.getZ() + aabb.minZ;
+                                d4 = pos.getZ() + aabb.maxZ;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d3 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d0 - x, size), v(d4 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d4 - z, u(d1 - x, size), v(d4 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d3 - z, size), normal);
+                                break;
+                            case UP:
+                                d0 = pos.getX() + aabb.minX;
+                                d1 = pos.getX() + aabb.maxX;
+                                d2 = pos.getY() + aabb.maxY;
+                                d3 = pos.getZ() + aabb.minZ;
+                                d4 = pos.getZ() + aabb.maxZ;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d3 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d0 - x, size), v(d4 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d4 - z, u(d1 - x, size), v(d4 - z, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d3 - z, size), normal);
+                                break;
+                            case EAST:
+                                d0 = pos.getX() + aabb.maxX;
+                                d2 = pos.getY() + aabb.minY;
+                                d3 = pos.getZ() + aabb.minZ;
+                                d4 = pos.getZ() + aabb.maxZ;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d3 - z, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d4 - z, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d4 - z, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d3 - z, size), v(d3 - y, size), normal);
+                                break;
+                            case WEST:
+                                d0 = pos.getX() + aabb.minX;
+                                d2 = pos.getY() + aabb.minY;
+                                d3 = pos.getZ() + aabb.minZ;
+                                d4 = pos.getZ() + aabb.maxZ;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d3 - z, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d4 - z, u(d4 - z, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d4 - z, u(d4 - z, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d3 - z, size), v(d3 - y, size), normal);
+                                break;
+                            case NORTH:
+                                d3 = pos.getZ() + aabb.minZ;
+                                d2 = pos.getY() + aabb.minY;
+                                d0 = pos.getX() + aabb.minX;
+                                d1 = pos.getX() + aabb.maxX;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d0 - x, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d3 - y, d3 - z, u(d1 - x, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d2 - y, size), normal);
+                                break;
+                            case SOUTH:
+                                d3 = pos.getZ() + aabb.maxZ;
+                                d2 = pos.getY() + aabb.minY;
+                                d0 = pos.getX() + aabb.minX;
+                                d1 = pos.getX() + aabb.maxX;
+                                shadowVertex(pose, consumer, color, d0 - x, d2 - y, d3 - z, u(d0 - x, size), v(d2 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d0 - x, d3 - y, d3 - z, u(d0 - x, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d3 - y, d3 - z, u(d1 - x, size), v(d3 - y, size), normal);
+                                shadowVertex(pose, consumer, color, d1 - x, d2 - y, d3 - z, u(d1 - x, size), v(d2 - y, size), normal);
+                                break;
+                        }
                     }
                 }
             }
         }
     }
-
-    private static void shadowVertex(
-            PoseStack.Pose pose, VertexConsumer consumer, int color, float offsetX, float offsetY, float offsetZ, float u, float v
+    public static void shadowVertex(
+            PoseStack.Pose pose,
+            VertexConsumer consumer,
+            int color,
+            double offsetX,
+            double offsetY,
+            double offsetZ,
+            double u,
+            double v,
+            Vector3f normal
     ) {
-        Vector3f vector3f = pose.pose().transformPosition(offsetX, offsetY, offsetZ, new Vector3f());
-        consumer.addVertex(vector3f.x(), vector3f.y(), vector3f.z(), color, u, v, OverlayTexture.NO_OVERLAY, 0Xff, 0.0F, 1.0F, 0.0F);
+        consumer.addVertex(pose.pose(), (float) offsetX, (float) offsetY, (float) offsetZ)
+                .setColor((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF, (color >> 24) & 0xFF)
+                .setUv((float) u, (float) v)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setUv2(240, 240)
+                .setNormal(normal.x(), normal.y(), normal.z());
     }
+
+
+    public static float u(double offset, float size) {
+        return (float) (-offset / 2.0 / size + 0.5);
+    }
+
+    public static float v(double offset, float size) {
+        return (float) (-offset / 2.0 / size + 0.5);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private  static void setT(PoseStack matrices,
                               orb_entity entity,
                               VertexConsumer vertexConsumers)

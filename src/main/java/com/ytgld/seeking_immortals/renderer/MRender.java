@@ -6,11 +6,16 @@ import com.mojang.blaze3d.shaders.UniformType;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.TriState;
+
+import java.util.function.Function;
 
 import static net.minecraft.client.renderer.RenderPipelines.*;
 
@@ -105,7 +110,31 @@ public abstract class MRender extends RenderType {
             true,
             RenderPs.LIGHTNINGBloodRenderPipeline,
             RenderType.CompositeState.builder().setOutputState(Distorted).createCompositeState(false));
+
+    public static final Function<ResourceLocation, RenderType> ENTITY_SHADOW = Util.memoize(
+            p_404038_ -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_404038_, TriState.FALSE, false))
+                        .setLightmapState(LIGHTMAP)
+                        .setOverlayState(OVERLAY)
+                        .setLayeringState(VIEW_OFFSET_Z_LAYERING)
+                        .createCompositeState(false);
+                return create("entity_shadow_seeking", 1536, false, false,RenderPs. ENTITY_SHADOW, rendertype$compositestate);
+            }
+    );
+    public static RenderType entityShadowsEEKING(ResourceLocation location) {
+        return ENTITY_SHADOW.apply(location);
+    }
     public static class RenderPs{
+        public static final RenderPipeline  ENTITY_SHADOW =
+                (RenderPipeline.builder(MATRICES_COLOR_FOG_SNIPPET)
+                        .withLocation("pipeline/entity_shadow")
+                        .withVertexShader("core/rendertype_entity_shadow")
+                        .withFragmentShader("core/rendertype_entity_shadow")
+                        .withCull(false)
+                        .withSampler("Sampler0").withBlend(BlendFunction.TRANSLUCENT)
+                        .withDepthWrite(false).withVertexFormat(DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS).build());
+
         public static final RenderPipeline endBloodRenderPipeline=
                 (RenderPipeline
                 .builder(RenderPipeline.builder(MATRICES_SNIPPET, FOG_SNIPPET)

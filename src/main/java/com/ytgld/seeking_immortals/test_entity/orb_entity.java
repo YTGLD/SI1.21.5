@@ -76,7 +76,7 @@ public class orb_entity extends ThrowableItemProjectile {
         }else {
             this.setDeltaMovement(0,0,0);
         }
-        if (this.tickCount > 120) {
+        if (this.tickCount > 999999999) {
             canSee = false;
             live--;
         }
