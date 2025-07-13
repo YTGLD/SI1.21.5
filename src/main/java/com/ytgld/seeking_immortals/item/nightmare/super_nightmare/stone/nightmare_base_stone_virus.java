@@ -40,9 +40,9 @@ public class nightmare_base_stone_virus extends nightmare implements SuperNightm
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = HashMultimap.create();
-        attributeModifiers.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        attributeModifiers.put(AttReg.heal, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        attributeModifiers.put(AttReg.cit, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 0.33f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(AttReg.heal, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 0.33f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(AttReg.cit, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 0.33f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         return attributeModifiers;
 

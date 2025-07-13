@@ -423,6 +423,20 @@
 "seeking_immortals.jei.item.seeking_immortals.the_erosion": "",
 
 
+  "item.seeking_immortals.defend_against_runestone":"§4抵御符石",
+  "item.defend_against_runestone.tool.string.1": "受击时有概率获得抗性II",
+  "item.defend_against_runestone.tool.string.2": "攻击时有概率对目标造成虚弱II",
+
+
+  "item.seeking_immortals.revive_runestone":"§4复苏符石",
+  "item.revive_runestone.tool.string.1": "受伤有概率吸收伤害",
+  "item.revive_runestone.tool.string.2": "攻击有概率吸取生命",
+
+  "item.seeking_immortals.strengthen_runestone":"§4强化符石",
+  "item.strengthen_runestone.tool.string.1": "攻击有概率获得力量II",
+  "item.strengthen_runestone.tool.string.2": "受伤有概率反弹伤害",
+
+
   "item.seeking_immortals.eye":"§4Evil Eyes",
   "item.eye.tool.string.1": "Tear the creatures you look at, weaken them and restore your health",
   "item.eye.tool.string.2": "Assuming you are at full health at the time of the bite, the excess recovered health will be stored in the item",

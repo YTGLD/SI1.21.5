@@ -33,7 +33,7 @@ public class end_bone  extends nightmare implements SuperNightmare {
             if (Handler.hascurio(player, Items.end_bone.get())) {
                 if (player.getHealth() >= player.getMaxHealth()){
                     if ( event.getSource().getEntity() instanceof LivingEntity living) {
-                        living.hurt(living.damageSources().dryOut(), event.getAmount() * 7);
+                        living.hurt(living.damageSources().dryOut(), event.getAmount() * 0.7f);
                     }
                     event.setAmount(event.getAmount()*0.2f);
                 }

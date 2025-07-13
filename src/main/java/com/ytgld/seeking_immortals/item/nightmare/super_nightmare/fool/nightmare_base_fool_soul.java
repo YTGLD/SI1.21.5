@@ -65,7 +65,7 @@ public class nightmare_base_fool_soul extends nightmare implements SuperNightmar
         });
         float health = 0;
         for (int ignored : integersHealth) {
-            health += 6;
+            health += 1;
         }
         linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), health, AttributeModifier.Operation.ADD_VALUE));
         return linkedHashMultimap;
@@ -93,7 +93,7 @@ public class nightmare_base_fool_soul extends nightmare implements SuperNightmar
             health++;
         }
         health /= 100;
-        health *= 3f;
+        health *= 1;
         linkedHashMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), health, AttributeModifier.Operation.ADD_VALUE));
         return linkedHashMultimap;
     }

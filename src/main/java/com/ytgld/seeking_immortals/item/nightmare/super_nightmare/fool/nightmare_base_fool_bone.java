@@ -27,12 +27,15 @@ public class nightmare_base_fool_bone extends nightmare implements SuperNightmar
     public static void attLook(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_base_fool_bone.get())) {
-                if (event.getEntity() instanceof Mob mob) {
-                    if (mob.getTarget() != null && mob.getTarget().is(player)) {
-                        if (Mth.nextInt(RandomSource.create(), 1, 100) <= 30) {
-                            mob.invulnerableTime = 0;
+                if (!player.getCooldowns().isOnCooldown(Items.nightmare_base_fool_bone.get().getDefaultInstance())) {
+                    if (event.getEntity() instanceof Mob mob) {
+                        if (mob.getTarget() != null && mob.getTarget().is(player)) {
+                            if (Mth.nextInt(RandomSource.create(), 1, 100) <= 30) {
+                                mob.invulnerableTime = 0;
+                            }
+                            event.setAmount((float) (event.getAmount() * (Config.SERVER.nightmare_base_fool_bone.getAsDouble())));
+                            player.getCooldowns().addCooldown(Items.nightmare_base_fool_bone.get().getDefaultInstance(),20);
                         }
-                        event.setAmount(event.getAmount() * (Config.SERVER.nightmare_base_fool_bone.get()));
                     }
                 }
             }

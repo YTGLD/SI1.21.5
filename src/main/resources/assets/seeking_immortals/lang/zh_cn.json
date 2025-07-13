@@ -30,15 +30,15 @@
 
 
   "item.seeking_immortals.nightmare_base_stone_virus": "§4Nightecora病毒",
-    "item.nightmare_base_stone_virus.tool.string": "伤害增加100%",
-  "item.nightmare_base_stone_virus.tool.string.1": "治疗增加100%",
-  "item.nightmare_base_stone_virus.tool.string.2": "暴击增加100%",
+    "item.nightmare_base_stone_virus.tool.string": "伤害增加33%",
+  "item.nightmare_base_stone_virus.tool.string.1": "治疗增加33%",
+  "item.nightmare_base_stone_virus.tool.string.2": "暴击增加33%",
   "item.nightmare_base_stone_virus.tool.string.3": "受到任意伤害都会额外附加10%最大生命值的惩罚,不受任何加成影响",
 
   "item.seeking_immortals.nightmare_base_stone_brain": "§4末世之脑",
   "item.nightmare_base_stone_brain.tool.string": "满血时伤害减少100%",
-  "item.nightmare_base_stone_brain.tool.string.1": "非满血状态伤害提高50%",
-  "item.nightmare_base_stone_brain.tool.string.2": "非满血状态抗性提高50%",
+  "item.nightmare_base_stone_brain.tool.string.1": "非满血状态伤害提高25%",
+  "item.nightmare_base_stone_brain.tool.string.2": "非满血状态抗性提高25%",
   "item.seeking_immortals.nightmare_virus":"噩梦之霍乱",
 
 
@@ -73,7 +73,7 @@
   "item.seeking_immortals.nightmare_base_black_eye_eye": "§4惶恐肉瘤",
   "item.nightmare_base_black_eye_eye.tool.string": "被注视的生物会无法移动",
   "item.nightmare_base_black_eye_eye.tool.string.1": "同时他会获得大量负面BUFF",
-  "item.nightmare_base_black_eye_eye.tool.string.2": "当你看向任意生物时，你会获得100%的伤害加成",
+  "item.nightmare_base_black_eye_eye.tool.string.2": "当你看向任意生物时，你会获得15%的伤害加成",
 
   "item.seeking_immortals.nightmare_base_black_eye_red": "§4罪恶之红唇",
   "item.nightmare_base_black_eye_red.tool.string": "每次杀死生物都会使所有属性增加5%",
@@ -186,7 +186,7 @@
 
   "item.seeking_immortals.nightmare_base_fool_bone":"§4危险的头骨",
   "item.nightmare_base_fool_bone.tool.string": "如果一个生物的攻击目标是你",
-  "item.nightmare_base_fool_bone.tool.string.1": "那么你对他的伤害翻倍",
+  "item.nightmare_base_fool_bone.tool.string.1": "那么你对他的伤害增加20%",
   "item.nightmare_base_fool_bone.tool.string.2": "并且攻击有30%的概率破除无敌帧",
   "advancements.tooltip.nightmare_base_fool_bone.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_fool_bone.hand": "史莱姆有骨头吗",
@@ -195,8 +195,8 @@
   "item.seeking_immortals.nightmare_base_fool_soul":"§4幽怨之魂",
   "item.nightmare_base_fool_soul.tool.string": "愚者之危的伤害处罚判定由5提高到14",
   "item.nightmare_base_fool_soul.tool.string.1": "愚者之危的生命处罚判定由2提高到9",
-  "item.nightmare_base_fool_soul.tool.string.2": "每佩戴一件饰品，治疗增加3%",
-  "item.nightmare_base_fool_soul.tool.string.3": "每佩戴一件噩梦饰品，生命值增加6",
+  "item.nightmare_base_fool_soul.tool.string.2": "每佩戴一件饰品，治疗增加1%",
+  "item.nightmare_base_fool_soul.tool.string.3": "每佩戴一件噩梦饰品，生命值增加1",
   "advancements.tooltip.nightmare_base_fool_soul.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_fool_soul.hand": "历史长河",
 
@@ -285,7 +285,7 @@
 
   "item.seeking_immortals.end_bone":"§4末世脊骨",
   "item.end_bone.tool.string": "满血时速度减少50%，受到的伤害减少80%",
-  "item.end_bone.tool.string.1": "满血时受到的伤害会以700%的比例反弹给攻击者",
+  "item.end_bone.tool.string.1": "满血时受到的伤害会以70%的比例反弹给攻击者",
 
   "advancements.tooltip.end_bone.text": "获得这个物品",
   "advancements.tooltip.end_bone.hand": "坚不可摧！",

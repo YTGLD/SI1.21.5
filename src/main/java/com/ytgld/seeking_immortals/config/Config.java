@@ -18,7 +18,7 @@ public class Config {
     public static class CommonConfig {
         public ModConfigSpec.IntValue Nightecora ;
         public final  ModConfigSpec.IntValue nightmare_base_redemption_deception ;
-        public final ModConfigSpec.IntValue nightmare_base_fool_bone ;
+        public final ModConfigSpec.DoubleValue nightmare_base_fool_bone ;
         public final ModConfigSpec.IntValue nightmare_base_insight_drug ;
         public final ModConfigSpec.IntValue nightmare_base_insight_drug_2 ;
         public final ModConfigSpec.IntValue nightmare_base_insight_insane ;
@@ -54,11 +54,11 @@ public class Config {
 
             nightmare_base_fool_bone = BUILDER
                     .comment("危险的头骨造成的额外伤害，“2”是两倍")
-                    .defineInRange("nightmare_base_fool_bone", 2, 0, 9999);
+                    .defineInRange("nightmare_base_fool_bone_", 1.2f, 0, 9999);
 
             nightmare_base_insight_drug = BUILDER
                     .comment("疯狂灵药的最大属性加成，单位百分比")
-                    .defineInRange("nightmare_base_insight_drug", 100, 0, 99999);
+                    .defineInRange("nightmare_base_insight_drug_", 50, 0, 99999);
 
             nightmare_base_insight_drug_2 = BUILDER
                     .comment("疯狂灵药的单物品计算的属性衰败，单位百分比")
@@ -66,7 +66,7 @@ public class Config {
 
             nightmare_base_insight_insane = BUILDER
                     .comment("癫狂之石的杀死生物后获得的伤害加成，单位百分比")
-                    .defineInRange("nightmare_base_insight_insane", 150, 0, 99999);
+                    .defineInRange("nightmare_base_insight_insane_", 25, 0, 99999);
 
 
             {
@@ -79,7 +79,7 @@ public class Config {
 
                 immortal = BUILDER
                         .comment("不朽轮回之印章的反伤概率")
-                        .defineInRange("immortal", 80, 0, 100);
+                        .defineInRange("immortal_", 70, 0, 100);
 
                 BUILDER.pop();
 

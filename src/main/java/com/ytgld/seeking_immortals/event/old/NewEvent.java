@@ -7,6 +7,9 @@ import com.ytgld.seeking_immortals.init.AttReg;
 import com.ytgld.seeking_immortals.init.Effects;
 import com.ytgld.seeking_immortals.init.Items;
 import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.abnormal_eye;
+import com.ytgld.seeking_immortals.item.nightmare.base.defend_against_runestone;
+import com.ytgld.seeking_immortals.item.nightmare.base.revive_runestone;
+import com.ytgld.seeking_immortals.item.nightmare.base.strengthen_runestone;
 import com.ytgld.seeking_immortals.item.nightmare.immortal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_eye;
@@ -103,7 +106,9 @@ public class NewEvent {
     public void LivingHurtEvent(LivingIncomingDamageEvent event){
         apple.damage(event);
         end_bone.hurts(event);
-
+        defend_against_runestone.hurt(event);
+        revive_runestone.hurt(event);
+        strengthen_runestone.hurt(event);
         nightmare_base_stone_virus.h(event);
         nightmare_base_black_eye_eye.attLook(event);
         nightmare_base_black_eye_heart.hurt(event);

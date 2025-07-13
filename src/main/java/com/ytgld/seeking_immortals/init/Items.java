@@ -5,6 +5,7 @@ import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.a_thousand_evil_e
 import com.ytgld.seeking_immortals.item.nightmare.abnormal.eye.abnormal_eye;
 import com.ytgld.seeking_immortals.item.nightmare.disintegrating_stone;
 import com.ytgld.seeking_immortals.item.nightmare.eye;
+import com.ytgld.seeking_immortals.item.nightmare.base.*;
 import com.ytgld.seeking_immortals.item.nightmare.immortal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_eye;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_heart;
@@ -84,6 +85,14 @@ public class Items {
     public static final DeferredHolder<Item,?> eye =ITEMS.registerItem("eye", eye::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> the_erosion =ITEMS.registerItem("the_erosion", the_erosion::new,new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item,?> abnormal_eye =ITEMS.registerItem("abnormal_eye", abnormal_eye::new,new Item.Properties().stacksTo(1));
+
+
+    public static final DeferredHolder<Item,?> defend_against_runestone =ITEMS.registerItem("defend_against_runestone", defend_against_runestone::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> revive_runestone =ITEMS.registerItem("revive_runestone", revive_runestone::new,new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item,?> strengthen_runestone =ITEMS.registerItem("strengthen_runestone", strengthen_runestone::new,new Item.Properties().stacksTo(1));
+
+
+
     public static final DeferredHolder<Item,?> a_thousand_evil_eyeballs =ITEMS.registerItem("a_thousand_evil_eyeballs", a_thousand_evil_eyeballs::new,new Item.Properties().stacksTo(1));
 
     public static final DeferredHolder<Item,?> nightmare_base_start_power =ITEMS.registerItem("nightmare_base_start_power", nightmare_base_start_power::new,new Item.Properties().stacksTo(1));

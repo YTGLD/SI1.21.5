@@ -105,18 +105,7 @@ public abstract class WorldRendererMixin implements MFramebuffer {
         PostChain postchain1 = this.minecraft.getShaderManager().getPostChain(SeekingImmortalsMod.POST, Set.of(DefaultFramebufferSets.MAIN,DefaultFramebufferSets.ENTITY_OUTLINE));
 
         if (postchain1 != null) {
-//            GlStateManager._enableBlend();
-//            GlStateManager._enableDepthTest();
-//            GlStateManager._blendFuncSeparate(
-//                    GlConst.GL_SRC_ALPHA,
-//                    GlConst.GL_ONE,
-//                    GlConst.GL_ONE,
-//                    GlConst.GL_ZERO
-//            );
-//
             postchain1.addToFrame(frameGraphBuilder, i, j, this._1_21_5$defaultFramebufferSets,null);
-
-//            GlStateManager._disableBlend();
         }
 
     }

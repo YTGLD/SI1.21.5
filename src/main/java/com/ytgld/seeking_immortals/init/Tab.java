@@ -24,6 +24,9 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base.get()));
                 b.accept(new ItemStack(Items.the_erosion.get()));
 
+                b.accept(new ItemStack(Items.defend_against_runestone.get()));
+                b.accept(new ItemStack(Items.revive_runestone.get()));
+                b.accept(new ItemStack(Items.strengthen_runestone.get()));
 
                 b.accept(new ItemStack(Items.nightmare_base_black_eye.get()));
                 b.accept(new ItemStack(Items.nightmare_base_black_eye_eye.get()));

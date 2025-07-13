@@ -26,14 +26,14 @@ public class nightmare_base_stone_brain extends nightmare implements SuperNightm
                 if (player.getHealth() >= player.getMaxHealth()) {
                     event.setAmount(0);
                 } else {
-                    event.setAmount(event.getAmount() * 1.5f);
+                    event.setAmount(event.getAmount() * 1.25f);
                 }
             }
         }
         if (event.getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_base_stone_brain.get())) {
                 if (!(player.getHealth() >= player.getMaxHealth())) {
-                    event.setAmount(event.getAmount() / 2);
+                    event.setAmount(event.getAmount() *0.75f);
                 }
             }
         }

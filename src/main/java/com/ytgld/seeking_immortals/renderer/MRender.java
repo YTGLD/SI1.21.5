@@ -117,13 +117,28 @@ public abstract class MRender extends RenderType {
                         .setTextureState(new RenderStateShard.TextureStateShard(p_404038_, TriState.FALSE, false))
                         .setLightmapState(LIGHTMAP)
                         .setOverlayState(OVERLAY)
+                        .setOutputState(OUTLINE_TARGET)
                         .setLayeringState(VIEW_OFFSET_Z_LAYERING)
                         .createCompositeState(false);
                 return create("entity_shadow_seeking", 1536, false, false,RenderPs. ENTITY_SHADOW, rendertype$compositestate);
             }
     );
+    public static final Function<ResourceLocation, RenderType> ENTITY_SHADOW_no_outline = Util.memoize(
+            p_404038_ -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_404038_, TriState.FALSE, false))
+                        .setLightmapState(LIGHTMAP)
+                        .setOverlayState(OVERLAY)
+                        .setLayeringState(VIEW_OFFSET_Z_LAYERING)
+                        .createCompositeState(false);
+                return create("entity_shadow_seeking_no_outline", 1536, false, false,RenderPs. ENTITY_SHADOW, rendertype$compositestate);
+            }
+    );
     public static RenderType entityShadowsEEKING(ResourceLocation location) {
         return ENTITY_SHADOW.apply(location);
+    }
+    public static RenderType entityShadowsENTITY_SHADOW_no_outline(ResourceLocation location) {
+        return ENTITY_SHADOW_no_outline.apply(location);
     }
     public static class RenderPs{
         public static final RenderPipeline  ENTITY_SHADOW =
