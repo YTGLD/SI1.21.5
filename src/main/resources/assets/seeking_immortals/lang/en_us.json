@@ -452,6 +452,68 @@
 
   "item.abnormal.tool.string": "强制解锁下列罪孽",
 
+  "seeking_immortals.configuration.噩梦": "Nightmare",
+  "seeking_immortals.configuration.无名邪眼": "Unnamed Evil Eye",
+  "seeking_immortals.configuration.不朽轮回之印章": "Seal of Immortal Cycle",
+  "seeking_immortals.configuration.裂天石": "Sky Splitting Stone",
+  "seeking_immortals.configuration.邪念之窥眸": "Evil Thought Glimpse",
+  "seeking_immortals.configuration.死兆方尖碑": "Death Omen Obelisk",
+  "seeking_immortals.configuration.愚者之危": "Fool's Dilemma",
+  "seeking_immortals.configuration.噩梦洞悉者": "Nightmare Insight",
+  "seeking_immortals.configuration.“救赎”": "“Redemption”",
+  "seeking_immortals.configuration.颠倒之物": "Reversal",
+  "seeking_immortals.configuration.噩梦之起始": "Nightmare Origin",
+
+
+  "seeking_immortals.configuration.nightmare_": "Nightmare",
+  "seeking_immortals.configuration.Nightecora_": "Nightecora Virus",
+  "seeking_immortals.configuration.nightmare_base_redemption_deception": "Deception",
+  "seeking_immortals.configuration.nightmare_base_redemption_deception_time": "Deception 2",
+  "seeking_immortals.configuration.nightmare_base_fool_bone_": "Fool's Dangerous Skull",
+  "seeking_immortals.configuration.nightmare_base_insight_drug_": "Crazy Potion",
+  "seeking_immortals.configuration.nightmare_base_insight_drug_2": "Crazy Potion 2",
+  "seeking_immortals.configuration.nightmare_base_insight_insane_": "Madness Stone",
+  "seeking_immortals.configuration.eye": "Unnamed Evil Eye",
+  "seeking_immortals.configuration.immortal_": "Seal of Immortal Cycle",
+  "seeking_immortals.configuration.disintegrating_stone": "Sky Splitting Stone",
+  "seeking_immortals.configuration.nightmare_base_black_eye": "Evil Thought Glimpse",
+  "seeking_immortals.configuration.nightmare_base_stone": "Death Omen Obelisk",
+  "seeking_immortals.configuration.nightmare_base_fool": "Fool's Dilemma",
+  "seeking_immortals.configuration.nightmare_base_insight": "Nightmare Insight",
+  "seeking_immortals.configuration.nightmare_base_redemption": "Redemption",
+  "seeking_immortals.configuration.nightmare_base_reversal": "Reversal",
+  "seeking_immortals.configuration.nightmare_base_start": "Nightmare Origin",
+
+  "seeking_immortals.config.nightmareBaseMaxItem": "The number of sins 'Nightmare Base' gives to the player",
+  "seeking_immortals.config.Nightecora": "Extra life value penalty from Nightecora virus, unit: percentage",
+  "seeking_immortals.config.nightmare_base_redemption_deception": "Health restored by 'Deception', unit: percentage",
+  "seeking_immortals.config.nightmare_base_redemption_deception_time": "Health restored by 'Deception', unit: seconds",
+  "seeking_immortals.config.nightmare_base_fool_bone": "Additional damage caused by Fool's Dangerous Skull, '2' is double",
+  "seeking_immortals.config.nightmare_base_insight_drug": "Maximum attribute boost of Crazy Potion, unit: percentage",
+  "seeking_immortals.config.nightmare_base_insight_drug_2": "Attribute decay per single item of Crazy Potion, unit: percentage",
+  "seeking_immortals.config.nightmare_base_insight_insane": "Damage boost after killing a creature with Madness Stone, unit: percentage",
+  "seeking_immortals.config.eye": "Soul extraction speed of 'Unnamed Evil Eye', 10 is 0.5 seconds, 20 is 1 second, unit: ticks",
+  "seeking_immortals.config.immortal": "Probability of counterattack of Seal of Immortal Cycle",
+  "seeking_immortals.config.disintegrating_stone": "Value given by a single module of Sky Splitting Stone",
+  "seeking_immortals.config.nightmare_base_black_eye": "Near-sightedness effect switch",
+  "seeking_immortals.config.nightmare_base_stone": "Damage received when injured at full health",
+  "seeking_immortals.config.nightmare_base_fool": "Maximum penalty value, 0.5 is 50%",
+  "seeking_immortals.config.nightmare_base_insight": "Enchantment reduction value",
+  "seeking_immortals.config.nightmare_base_redemption": "Attribute decay ratio",
+  "seeking_immortals.config.nightmare_base_reversal": "Minimum value reduced per death",
+  "seeking_immortals.config.nightmare_base_start": "Armor value penalty",
+
+
+
+
+
+
+
+
+
+
+
+
   "item.seeking_immortals.abnormal_eye": "§4窥探之印",
   "item.abnormal_eye.tool.string": "降低80%邪念之窥眸的近视效果",
 
