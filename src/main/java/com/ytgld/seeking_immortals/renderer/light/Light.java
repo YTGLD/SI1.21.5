@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.renderer.light;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.SeekingImmortalsMod;
 import com.ytgld.seeking_immortals.renderer.MRender;
 import com.ytgld.seeking_immortals.test_entity.orb_entity;
@@ -115,7 +116,7 @@ public class Light {
                     if (f1 >= 0.0F) {
 
                         float maxDist = 5;
-                        float dist = renderState.getDistanceToGround();
+                        float dist = Handler.getDistanceToGround(renderState);
                         int alpha = (int) (255 * (1 - (dist / maxDist)));
                         if (alpha < 0) alpha = 0; // 确保 alpha 不会小于 0
                         if (dist > maxDist) {

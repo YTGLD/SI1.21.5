@@ -479,6 +479,7 @@
   "seeking_immortals.config.nightmare_base_redemption":"属性衰败比例",
   "seeking_immortals.config.nightmare_base_reversal": "每次死亡降低的最低值",
   "seeking_immortals.config.nightmare_base_start":"护甲值的处罚",
+  "effect.seeking_immortals.invulnerable": "无懈可击",
 
 
   "item.seeking_immortals.eye":"§4无名邪眼",

@@ -1,6 +1,7 @@
 package com.ytgld.seeking_immortals.mixin.common;
 
 import com.ytgld.seeking_immortals.Handler;
+import com.ytgld.seeking_immortals.init.Effects;
 import com.ytgld.seeking_immortals.init.Items;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -21,6 +22,9 @@ public abstract class EntityMixin {
     @Inject(at = @At("RETURN"), method = "isInvulnerableToBase", cancellable = true)
     public void mhead(DamageSource p_20122_, CallbackInfoReturnable<Boolean> cir) {
         if ((Entity) (Object) this instanceof Player player) {
+            if (player.hasEffect(Effects.invulnerable)){
+                cir.setReturnValue(true);
+            }
             if (Handler.hascurio(player, Items.nightmare_base_redemption_degenerate.get())) {
                 if (p_20122_.is(DamageTypes.MAGIC) ||
                         p_20122_.is(DamageTypes.FALL) ||

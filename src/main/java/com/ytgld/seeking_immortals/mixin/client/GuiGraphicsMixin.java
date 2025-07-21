@@ -77,36 +77,46 @@ public abstract class GuiGraphicsMixin {
                 Vector2ic vector2ic = tooltipPositioner.positionTooltip(this.guiWidth(), this.guiHeight(), preEvent.getX(), preEvent.getY(), i, j);
                 int l = vector2ic.x();
                 int i1 = vector2ic.y();
-                int k1 = i1;
-
-
-                int k2;
-                ClientTooltipComponent clienttooltipcomponent2;
-                for (k2 = 0; k2 < tooltipLines.size(); ++k2) {
-                    clienttooltipcomponent2 = tooltipLines.get(k2);
-                    clienttooltipcomponent2.renderText(preEvent.getFont(), l, k1, this.pose.last().pose(), this.bufferSource);
-                    k1 += clienttooltipcomponent2.getHeight(preEvent.getFont()) + (k2 == 0 ? 2 : 0);
-                }
-
-                k1 = i1;
-
-                for (k2 = 0; k2 < tooltipLines.size(); ++k2) {
-                    clienttooltipcomponent2 = tooltipLines.get(k2);
-                    clienttooltipcomponent2.renderImage(preEvent.getFont(), l, k1, i2, j2, (GuiGraphics) (Object) this);
-                    k1 += clienttooltipcomponent2.getHeight(preEvent.getFont()) + (k2 == 0 ? 2 : 0);
-                }
-
-                this.pose.popPose();
                 if (tooltipStack.getItem() instanceof INightmare) {
                     this.pose.pushPose();
                     moonstone$renderTooltipBackground_nig((GuiGraphics) (Object) this, l, i1, i2, j2, 400, 0xff000000, 0xff000000, 0xff000000, 0xff000000);
                     this.pose.popPose();
                 }
-
-                this.pose.pushPose();
                 si1_21_4$renderTooltipBackground((GuiGraphics) (Object) this, l, i1, i, j, 400);
-                this.pose.translate(0.0F, 0.0F, 400.0F);
+            }
+        }
+    }
+    @Inject(at = @At(value = "HEAD"),method = "renderTooltipInternal(Lnet/minecraft/client/gui/Font;Ljava/util/List;IILnet/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipPositioner;Lnet/minecraft/resources/ResourceLocation;)V")
+    public void renderTooltipInternal2(Font font, List<ClientTooltipComponent> tooltipLines, int mouseX, int mouseY, ClientTooltipPositioner tooltipPositioner, ResourceLocation sprite, CallbackInfo ci) {
+        if (!tooltipLines.isEmpty()) {
+            if (tooltipStack.getItem()instanceof INightmare) {
+                RenderTooltipEvent.Pre preEvent = ClientHooks.onRenderTooltipPre(this.tooltipStack, (GuiGraphics) (Object) this, mouseX, mouseY, this.guiWidth(), this.guiHeight(), tooltipLines, font, tooltipPositioner);
+                if (preEvent.isCanceled()) {
+                    return;
+                }
 
+                int i = 0;
+                int j = tooltipLines.size() == 1 ? -2 : 0;
+
+                ClientTooltipComponent clienttooltipcomponent;
+                for (Iterator<ClientTooltipComponent> var10 = tooltipLines.iterator(); var10.hasNext(); j += clienttooltipcomponent.getHeight(preEvent.getFont())) {
+                    clienttooltipcomponent = var10.next();
+                    int k = clienttooltipcomponent.getWidth(preEvent.getFont());
+                    if (k > i) {
+                        i = k;
+                    }
+                }
+
+                int i2 = i;
+                int j2 = j;
+                Vector2ic vector2ic = tooltipPositioner.positionTooltip(this.guiWidth(), this.guiHeight(), preEvent.getX(), preEvent.getY(), i, j);
+                int l = vector2ic.x();
+                int i1 = vector2ic.y();
+                if (tooltipStack.getItem() instanceof INightmare) {
+                    this.pose.pushPose();
+                    moonstone$renderTooltipBackground_nig2((GuiGraphics) (Object) this, l, i1, i2, j2, 400, 0xff000000, 0xff000000, 0xff000000, 0xff000000);
+                    this.pose.popPose();
+                }
             }
         }
     }
@@ -164,7 +174,15 @@ public abstract class GuiGraphicsMixin {
         guiGraphics.pose().popPose();
     }
 
-
+    @Unique
+    private void moonstone$renderTooltipBackground_nig2(GuiGraphics p_282666_, int p_281901_, int p_281846_, int p_281559_, int p_283336_, int p_283422_, int backgroundTop, int backgroundBottom, int borderTop, int borderBottom)
+    {
+        int i = p_281901_ - 3;
+        int j = p_281846_ - 3;
+        int k = p_281559_ + 3 + 3;
+        int l = p_283336_ + 3 + 3;
+        moonstone$renderRectangle_nig2(p_282666_, i, j, k, l, p_283422_, backgroundTop, backgroundBottom);
+    }
     @Unique
     private void moonstone$renderTooltipBackground_nig(GuiGraphics p_282666_, int p_281901_, int p_281846_, int p_281559_, int p_283336_, int p_283422_, int backgroundTop, int backgroundBottom, int borderTop, int borderBottom)
     {
@@ -174,7 +192,7 @@ public abstract class GuiGraphicsMixin {
         int l = p_283336_ + 3 + 3;
         moonstone$renderHorizontalLine_nig(p_282666_, i, j - 1, k, p_283422_, backgroundTop);
         moonstone$renderHorizontalLine_nig(p_282666_, i, j + l, k, p_283422_, backgroundBottom);
-        moonstone$renderRectangle_nig(p_282666_, i, j, k, l, p_283422_, backgroundTop, backgroundBottom);
+//        moonstone$renderRectangle_nig(p_282666_, i, j, k, l, p_283422_, backgroundTop, backgroundBottom);
         moonstone$renderVerticalLineGradient_nig(p_282666_, i - 1, j, l, p_283422_, backgroundTop, backgroundBottom);
         moonstone$renderVerticalLineGradient_nig(p_282666_, i + k, j, l, p_283422_, backgroundTop, backgroundBottom);
     }
@@ -185,9 +203,14 @@ public abstract class GuiGraphicsMixin {
     @Unique
     private void moonstone$renderVerticalLineGradient_nig(GuiGraphics p_282478_, int p_282583_, int p_283262_, int p_283161_, int p_283322_, int p_282624_, int p_282756_) {
         moonstone$fillGradient_nig(p_282583_, p_283262_, p_282583_ + 1, p_283262_ + p_283161_, p_283322_, p_282624_, p_282756_);
-    }@Unique
+    }
+    @Unique
     private void moonstone$renderRectangle_nig(GuiGraphics p_281392_, int p_282294_, int p_283353_, int p_282640_, int p_281964_, int p_283211_, int p_282349_, int colorTo) {
         moonstone$fillGradient_nig(p_282294_, p_283353_, p_282294_ + p_282640_, p_283353_ + p_281964_, p_283211_, p_282349_, colorTo);
+    }
+    @Unique
+    private void moonstone$renderRectangle_nig2(GuiGraphics p_281392_, int p_282294_, int p_283353_, int p_282640_, int p_281964_, int p_283211_, int p_282349_, int colorTo) {
+        moonstone$fillGradient_nig2(p_282294_, p_283353_, p_282294_ + p_282640_, p_283353_ + p_281964_, p_283211_, p_282349_, colorTo);
     }
 
     @Unique
@@ -221,9 +244,12 @@ public abstract class GuiGraphicsMixin {
     }
     @Unique
     public void moonstone$fillGradient_nig(int p_282702_, int p_282331_, int p_281415_, int p_283118_, int p_282419_, int p_281954_, int p_282607_) {
-        this.moonstone$fillGradient_nig(MRender.endBlood, p_282702_, p_282331_, p_281415_, p_283118_, p_281954_, p_282607_, p_282419_);
+        this.moonstone$fillGradient_nig(MRender.endBloodLight, p_282702_, p_282331_, p_281415_, p_283118_, p_281954_, p_282607_, p_282419_);
     }
-
+    @Unique
+    public void moonstone$fillGradient_nig2(int p_282702_, int p_282331_, int p_281415_, int p_283118_, int p_282419_, int p_281954_, int p_282607_) {
+        this.moonstone$fillGradient_nig(MRender.endBloodLight, p_282702_, p_282331_, p_281415_, p_283118_, p_281954_, p_282607_, p_282419_);
+    }
     @Unique
     public void moonstone$fillGradient_nig(RenderType p_286522_, int p_286535_, int p_286839_, int p_286242_, int p_286856_, int p_286809_, int p_286833_, int p_286706_) {
         VertexConsumer vertexconsumer = this.bufferSource.getBuffer(p_286522_);
@@ -243,7 +269,7 @@ public abstract class GuiGraphicsMixin {
         float f7 = (float)ARGB.blue(p_282949_) / 255.0F;
 
         Matrix4f matrix4f = this.pose.last().pose();
-        VertexConsumer vertexconsumer = this.bufferSource.getBuffer(MRender.endBlood);
+        VertexConsumer vertexconsumer = this.bufferSource.getBuffer(MRender.endBloodLight);
 
         vertexconsumer.addVertex(matrix4f, (float)p_283414_, (float)p_281397_, (float)p_283505_).setColor(f1, f2, f3, f);
         vertexconsumer.addVertex(matrix4f, (float)p_283414_, (float)p_281521_, (float)p_283505_).setColor(f5, f6, f7, f4);

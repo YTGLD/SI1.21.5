@@ -2,6 +2,7 @@ package com.ytgld.seeking_immortals.test_entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.ytgld.seeking_immortals.Handler;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.renderer.MRender;
 import com.ytgld.seeking_immortals.renderer.light.Light;
@@ -38,7 +39,7 @@ public class OrbEntityRenderer<T extends orb_entity> extends net.minecraft.clien
             if (f < 0) {
                 f = 0;
             }
-            float f1 = renderState.entity.getDistanceToGround();
+            float f1 = Handler.getDistanceToGround(renderState.entity);
             if (f1 > 0.0F) {
                 Light. renderShadow(poseStack, bufferSource, renderState.entity, renderState.entity.level(), f,
                         renderState.entity.r,renderState.entity.g,renderState.entity.b);

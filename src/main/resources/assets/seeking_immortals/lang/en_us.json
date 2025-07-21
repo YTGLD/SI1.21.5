@@ -435,6 +435,7 @@
   "item.seeking_immortals.strengthen_runestone":"§4强化符石",
   "item.strengthen_runestone.tool.string.1": "攻击有概率获得力量II",
   "item.strengthen_runestone.tool.string.2": "受伤有概率反弹伤害",
+  "effect.seeking_immortals.invulnerable": "无懈可击",
 
 
   "item.seeking_immortals.eye":"§4Evil Eyes",

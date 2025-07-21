@@ -38,6 +38,9 @@
     "seeking_immortals:eye",
     "seeking_immortals:a_thousand_evil_eyeballs",
 
+    "seeking_immortals:defend_against_runestone",
+    "seeking_immortals:revive_runestone",
+    "seeking_immortals:strengthen_runestone",
     "seeking_immortals:hypocritical_self_esteem"
   ]
 }

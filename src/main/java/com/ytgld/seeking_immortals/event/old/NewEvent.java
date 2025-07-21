@@ -12,12 +12,14 @@ import com.ytgld.seeking_immortals.item.nightmare.base.revive_runestone;
 import com.ytgld.seeking_immortals.item.nightmare.base.strengthen_runestone;
 import com.ytgld.seeking_immortals.item.nightmare.immortal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.SuperNightmare;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.extend.nightmare;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_eye;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_heart;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_red;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.fool.apple;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.fool.nightmare_base_fool_bone;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.insight.nightmare_base_insight_insane;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_insight;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_reversal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_start;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_stone;
@@ -30,11 +32,13 @@ import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.end_bone
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.nightmare_base_stone_brain;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.stone.nightmare_base_stone_virus;
 import com.ytgld.seeking_immortals.item.nightmare.the_erosion;
+import com.ytgld.seeking_immortals.item.tip.AllTip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.TriState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -43,14 +47,17 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
@@ -61,7 +68,18 @@ import java.util.Map;
 import java.util.Random;
 
 public class NewEvent {
+    public static float time= 0;
 
+    @SubscribeEvent
+    public void tick(LevelTickEvent.Post event){
+        time++;
+    }
+
+
+    @SubscribeEvent
+    public  void LivingExperienceDropEvent(LivingExperienceDropEvent event) {
+        nightmare_base_insight.exp(event);
+    }
     @SubscribeEvent
     public void CurioLivingIncomingDamageEvent(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player) {
@@ -208,7 +226,10 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void hurt(ItemTooltipEvent event) {
-
+        if (event.getItemStack().getItem() instanceof AllTip){
+            event.getToolTip().add(1, Component.translatable(
+                    "key.keyboard.left.shift").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F))));
+        }
         if (event.getEntity() instanceof Player player) {
             if (!Handler.hascurio(player, Items.nightmare_base.get())) {
                 if (event.getItemStack().getItem() instanceof SuperNightmare) {
@@ -241,7 +262,6 @@ public class NewEvent {
             }
         }
     }
-
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent

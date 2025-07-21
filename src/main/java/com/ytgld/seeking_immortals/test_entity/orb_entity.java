@@ -54,7 +54,7 @@ public class orb_entity extends ThrowableItemProjectile {
             trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
         }
         if (!trailPositions.isEmpty()) {
-            if (trailPositions.size() > 20||!canSee) {
+            if (trailPositions.size() > 20 || !canSee) {
                 trailPositions.removeFirst();
             }
         }
@@ -82,17 +82,17 @@ public class orb_entity extends ThrowableItemProjectile {
                     }
                 }
             }
-        }else {
-            this.setDeltaMovement(0,0,0);
+        } else {
+            this.setDeltaMovement(0, 0, 0);
         }
         if (this.tickCount > 120) {
             canSee = false;
             live--;
         }
-        if (!canSee){
+        if (!canSee) {
             live--;
         }
-        if (live<=0) {
+        if (live <= 0) {
             this.discard();
         }
         if (canSee) {
@@ -107,7 +107,7 @@ public class orb_entity extends ThrowableItemProjectile {
                                     playerPos.y + range,
                                     playerPos.z + range));
             for (LivingEntity living : entities) {
-                if (this.getOwner() != null && !living.is(this.getOwner())&&this.getOwner() instanceof Player player) {
+                if (this.getOwner() != null && !living.is(this.getOwner()) && this.getOwner() instanceof Player player) {
                     if (this.tickCount > 15) {
                         living.hurt(living.damageSources().playerAttack(player), 4);
                         living.invulnerableTime = 0;
@@ -121,19 +121,6 @@ public class orb_entity extends ThrowableItemProjectile {
             }
             super.tick();
         }
-    }
-    public float getDistanceToGround() {
-        // 获取实体的位置
-        Vec3 position = this.position();
-        BlockPos blockPos = new BlockPos((int) position.x, (int) position.y, (int) position.z);
-
-        // 获取该位置下方的最近非空气方块位置
-        BlockPos groundPos = blockPos.below();
-        while (groundPos.getY() > -100 && this.level().getBlockState(groundPos).isAir()) {
-            groundPos = groundPos.below();
-        }
-        Vec3 groundCenter = new Vec3(groundPos.getX() + 0.5, groundPos.getY() + 0.5, groundPos.getZ() + 0.5);
-        return (float) position.distanceTo(groundCenter);
     }
 
     @Override

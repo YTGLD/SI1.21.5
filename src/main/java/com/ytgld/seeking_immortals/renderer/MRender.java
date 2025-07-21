@@ -78,6 +78,21 @@ public abstract class MRender extends RenderType {
                     )
                     .createCompositeState(false)
     );
+    public static final RenderType endBloodLight = create(
+            "end_si_ging_light",
+            1536,
+            false,
+            true,
+            RenderPs.endBloodRenderPipeline,
+            RenderType.CompositeState.builder()
+                    .setTextureState(
+                            RenderStateShard.MultiTextureStateShard.builder()
+                                    .add(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID,
+                                            "textures/ging_light.png"), false, false)
+                                    .build()
+                    )
+                    .createCompositeState(false)
+    );
     public static final RenderType endBloodOutline = create(
             "end_si_outline",
             1536,

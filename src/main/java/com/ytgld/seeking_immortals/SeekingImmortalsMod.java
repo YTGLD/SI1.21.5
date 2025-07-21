@@ -3,6 +3,7 @@ package com.ytgld.seeking_immortals;
 import com.mojang.logging.LogUtils;
 import com.ytgld.seeking_immortals.config.ClientConfig;
 import com.ytgld.seeking_immortals.config.Config;
+import com.ytgld.seeking_immortals.item.tip.ToolTip;
 import com.ytgld.seeking_immortals.test_entity.client.ErosionSoulRenderer;
 import com.ytgld.seeking_immortals.test_entity.client.OrbEntityRenderer;
 import com.ytgld.seeking_immortals.client.particle.ParticleRenderer;
@@ -21,16 +22,14 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.client.event.RegisterRenderPipelinesEvent;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
 import java.util.Locale;
+import java.util.function.Function;
 
 @Mod(SeekingImmortalsMod.MODID)
 public class SeekingImmortalsMod
@@ -46,8 +45,6 @@ public class SeekingImmortalsMod
             "light");
 
     public SeekingImmortalsMod(IEventBus eventBus, ModContainer modContainer) {
-
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
         NeoForge.EVENT_BUS.register(new NewEvent());
         NeoForge.EVENT_BUS.register(new AdvancementEvt());
@@ -69,6 +66,11 @@ public class SeekingImmortalsMod
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+        @SubscribeEvent
+        public static void RegisterClientTooltipComponentFactoriesEvent(RegisterClientTooltipComponentFactoriesEvent event){
+            event.register(ToolTip.class, Function.identity());
+        }
+
         @SubscribeEvent
         public static void RegisterStageEvent(RenderLevelStageEvent.RegisterStageEvent event) {
             RenderType renderType = MRender.black;
